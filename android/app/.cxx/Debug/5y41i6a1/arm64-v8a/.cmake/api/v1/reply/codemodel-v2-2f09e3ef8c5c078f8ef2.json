@@ -1,0 +1,453 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						30
+					]
+				},
+				{
+					"build" : "_deps/espeak_ng-build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.espeak_ng-build-Debug-d374d533dc9e1c1cdf69.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					]
+				},
+				{
+					"build" : "_deps/espeak_ng-build/src",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"jsonFile" : "directory-_deps.espeak_ng-build.src-Debug-ecda310c73495ba66fde.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src"
+				},
+				{
+					"build" : "_deps/espeak_ng-build/src/ucd-tools",
+					"jsonFile" : "directory-_deps.espeak_ng-build.src.ucd-tools-Debug-7b2fe7f122240c0fa573.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/ucd-tools",
+					"targetIndexes" : 
+					[
+						31
+					]
+				},
+				{
+					"build" : "_deps/espeak_ng-build/src/libespeak-ng",
+					"jsonFile" : "directory-_deps.espeak_ng-build.src.libespeak-ng-Debug-1de16e8ed1ae8d981818.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/libespeak-ng",
+					"targetIndexes" : 
+					[
+						28
+					]
+				},
+				{
+					"build" : "_deps/piper_phonemize-build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.piper_phonemize-build-Debug-4a36a91323e5c74159fc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-src",
+					"targetIndexes" : 
+					[
+						29
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "sherpa-tts-jni",
+					"targetIndexes" : 
+					[
+						30
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "espeak-ng",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						31
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "piper_phonemize",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						29
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "Continuous::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-Continuous-Debug-845115e705f44634261d.json",
+					"name" : "Continuous",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousBuild::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousBuild-Debug-3aa537d86644f596418f.json",
+					"name" : "ContinuousBuild",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousConfigure::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousConfigure-Debug-56640fca18b7ca2e66f4.json",
+					"name" : "ContinuousConfigure",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousCoverage::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousCoverage-Debug-c7c20ca6c6b8dfd292ae.json",
+					"name" : "ContinuousCoverage",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousMemCheck::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousMemCheck-Debug-292b0aae8693391c221f.json",
+					"name" : "ContinuousMemCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousStart::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousStart-Debug-b75898b2265351b217dc.json",
+					"name" : "ContinuousStart",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousSubmit::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousSubmit-Debug-0de368c4e20021d80157.json",
+					"name" : "ContinuousSubmit",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousTest::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousTest-Debug-3c53091488530f7e4060.json",
+					"name" : "ContinuousTest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ContinuousUpdate::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ContinuousUpdate-Debug-8d605206a8cd35a7e6c5.json",
+					"name" : "ContinuousUpdate",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Experimental::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-Experimental-Debug-8895580b3d1ac94f555e.json",
+					"name" : "Experimental",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalBuild::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalBuild-Debug-2dd6523a2e9e0945876c.json",
+					"name" : "ExperimentalBuild",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalConfigure::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalConfigure-Debug-b4dee17c8c1ac460fe6d.json",
+					"name" : "ExperimentalConfigure",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalCoverage::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalCoverage-Debug-5a3f1c508ec4ffa72ad4.json",
+					"name" : "ExperimentalCoverage",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalMemCheck::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalMemCheck-Debug-0108f389d9ddb81af8c9.json",
+					"name" : "ExperimentalMemCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalStart::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalStart-Debug-84d93e570ee6942acc5a.json",
+					"name" : "ExperimentalStart",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalSubmit::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalSubmit-Debug-49462b62fa1a02bce501.json",
+					"name" : "ExperimentalSubmit",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalTest::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalTest-Debug-2d17cdd06ef377f181a3.json",
+					"name" : "ExperimentalTest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ExperimentalUpdate::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-ExperimentalUpdate-Debug-fe2cabf54c1799046fdd.json",
+					"name" : "ExperimentalUpdate",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Nightly::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-Nightly-Debug-e09e3eabfcbc64d7b63d.json",
+					"name" : "Nightly",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyBuild::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyBuild-Debug-40f596018a725bbccb2b.json",
+					"name" : "NightlyBuild",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyConfigure::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyConfigure-Debug-a64b5665bb88a66b8013.json",
+					"name" : "NightlyConfigure",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyCoverage::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyCoverage-Debug-67c46e6c87fe370d1218.json",
+					"name" : "NightlyCoverage",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemCheck::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyMemCheck-Debug-dd6e1c9bbb6bb7e57a04.json",
+					"name" : "NightlyMemCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyMemoryCheck::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-8572ca31a07d61d24f89.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyStart::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyStart-Debug-6ab0295a41f54a97f21a.json",
+					"name" : "NightlyStart",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlySubmit::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlySubmit-Debug-398746d5f6c0bd801fc9.json",
+					"name" : "NightlySubmit",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyTest::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyTest-Debug-a01b38f02241e0a79967.json",
+					"name" : "NightlyTest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "NightlyUpdate::@da1578fa6f85c0c377db",
+					"jsonFile" : "target-NightlyUpdate-Debug-ec1fce225660bf53f0e2.json",
+					"name" : "NightlyUpdate",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "espeak-ng::@d022d621657d817440c6",
+					"jsonFile" : "target-espeak-ng-Debug-0e70835048fdaf904b16.json",
+					"name" : "espeak-ng",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "piper_phonemize::@acdb099e9f03f5e4eb87",
+					"jsonFile" : "target-piper_phonemize-Debug-80324869b52f53afc147.json",
+					"name" : "piper_phonemize",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sherpa-tts-jni::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sherpa-tts-jni-Debug-fa09e9d8682bf8d1c3a4.json",
+					"name" : "sherpa-tts-jni",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ucd::@161e9447431032a96f34",
+					"jsonFile" : "target-ucd-Debug-3ed53a3af8894eba9814.json",
+					"name" : "ucd",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a",
+		"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

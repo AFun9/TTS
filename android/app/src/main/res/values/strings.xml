@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sherpa TTS</string>
+    <string name="hint_text_input">输入要合成的文本…</string>
+    <string name="btn_generate">生成语音</string>
+    <string name="btn_stop">停止</string>
+    <string name="speed_label">语速</string>
+    <string name="volume_label">音量</string>
+    <string name="status_idle">就绪</string>
+    <string name="status_loading">正在生成语音…</string>
+    <string name="status_success">生成成功</string>
+    <string name="status_playing">正在播放</string>
+    <string name="status_stopped">已停止</string>
+    <string name="import_text">导入文本</string>
+    <string name="export_audio">导出音频</string>
+    <string name="toast_enter_text">请输入文本</string>
+    <string name="toast_storage_required">需要存储权限才能使用应用</string>
+    <string name="toast_generate_success">语音生成成功</string>
+    <string name="model_label">模型 (ONNX)</string>
+    <string name="tokens_label">Tokens (tokens.txt)</string>
+    <string name="btn_select">选择</string>
+    <string name="not_selected">未选择</string>
+    <string name="toast_select_model_first">请先选择模型和 tokens 文件</string>
+    <string name="toast_file_copied">已复制到应用目录</string>
+    <string name="error_engine_not_ready">当前为占位实现，尚未对接 sherpa-onnx 原生库，无法生成语音。请在 tts_jni.cpp 中完成 JNI 实现并链接 sherpa-onnx 后重新编译。</string>
+    <string name="status_idle_hint">就绪（需完成 JNI 对接后可生成）</string>
+</resources>

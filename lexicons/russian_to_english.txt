@@ -1,0 +1,18 @@
+# Russian VITS model -> English pronunciation mapping
+# Format: english_word russian_phonemes...
+# This lexicon maps English words to Russian phoneme sequences
+# for using Russian-trained VITS model to pronounce English
+
+hello х э л о
+hi х а й
+world в о р л д
+thank т х æ ŋ к
+you ј у
+good г у д
+morning м о р н ɪ ŋ
+how х а ʊ
+are ɑ р
+today т ə д е й
+nice н а й с
+to т ə
+meet м и т

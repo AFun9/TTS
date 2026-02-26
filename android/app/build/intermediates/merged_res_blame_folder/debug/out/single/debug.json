@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.k2fsa.sherpa.tts.app-merged_res-36:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.k2fsa.sherpa.tts.app-main-38:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.k2fsa.sherpa.tts.app-merged_res-36:/layout_activity_main.xml.flat",
+        "source": "com.k2fsa.sherpa.tts.app-main-38:/layout/activity_main.xml"
+    }
+]

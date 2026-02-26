@@ -1,0 +1,320 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/4g4y275a/obj/arm64-v8a/libsherpa-tts-jni.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_directories",
+			"target_link_libraries",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 37,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 48,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 40,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 52,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 55,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 57,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 43,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 44,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "LIBESPEAK_NG_EXPORT=1"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "SHERPA_TTS_USE_ESPEAK_NG=1"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "SHERPA_TTS_USE_ONNXRUNTIME=1"
+				},
+				{
+					"define" : "sherpa_tts_jni_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime/include/onnxruntime/core/session"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/piper-phonemize/src"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/piper-phonemize/src/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/ucd-tools/src/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			],
+			"sysroot" : 
+			{
+				"path" : "/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+			}
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 5,
+			"id" : "ucd::@0609626eed16f09651ec"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "espeak-ng::@a91aae091242a72d3363"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "piper_phonemize::@274947d7ce9986cf29f0"
+		}
+	],
+	"id" : "sherpa-tts-jni::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-static-libstdc++ -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--no-undefined-version -Wl,--fatal-warnings -Wl,--no-undefined -Qunused-arguments",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/home/model/tools/sherpa-tts-wrapper/android/app/build/onnxruntime/lib/arm64-v8a",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/home/model/tools/sherpa-tts-wrapper/android/app/build/onnxruntime/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/24/liblog.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-lonnxruntime",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "_deps/piper_phonemize-build-local/libpiper_phonemize.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "_deps/espeak_ng-build-local/src/libespeak-ng/libespeak-ng.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "_deps/espeak_ng-build-local/src/ucd-tools/libucd.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-Wl,-rpath,$ORIGIN",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lm",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-latomic -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+		}
+	},
+	"name" : "sherpa-tts-jni",
+	"nameOnDisk" : "libsherpa-tts-jni.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tts_jni.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "token_table.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "lexicon.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "wave_writer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vits_engine.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "espeak_phonemize.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "frontend_router.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

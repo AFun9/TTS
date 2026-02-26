@@ -1,0 +1,31 @@
+ninja: Entering directory `/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/1z4j65w2/arm64-v8a'
+[1/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/mnemonics.c.o
+[2/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/ieee80.c.o
+[3/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/espeak_api.c.o
+[4/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/phoneme.c.o
+[5/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/error.c.o
+[6/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/langopts.c.o
+[7/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/common.c.o
+[8/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/speech.c.o
+[9/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/encoding.c.o
+[10/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/intonation.c.o
+[11/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/soundicon.c.o
+[12/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/tr_languages.c.o
+[13/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/synthdata.c.o
+[14/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/ssml.c.o
+[15/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/setlengths.c.o
+[16/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/phonemelist.c.o
+[17/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/voices.c.o
+[18/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/spect.c.o
+[19/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/translate.c.o
+[20/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/wavegen.c.o
+[21/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/translateword.c.o
+[22/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/readclause.c.o
+[23/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/synthesize.c.o
+[24/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/numbers.c.o
+[25/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/compiledict.c.o
+[26/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/dictionary.c.o
+[27/30] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/compiledata.c.o
+[28/30] Linking C static library _deps/espeak_ng-build-local/src/libespeak-ng/libespeak-ng.a
+[29/30] Linking CXX static library _deps/piper_phonemize-build-local/libpiper_phonemize.a
+[30/30] Linking CXX shared library /home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/1z4j65w2/obj/arm64-v8a/libsherpa-tts-jni.so

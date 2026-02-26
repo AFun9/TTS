@@ -1,0 +1,64 @@
+ninja: Entering directory `/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/1z4j65w2/arm64-v8a'
+[1/178] Building C object _deps/espeak_ng-build-local/src/ucd-tools/CMakeFiles/ucd.dir/src/ctype.c.o
+[2/178] Building C object _deps/espeak_ng-build-local/src/ucd-tools/CMakeFiles/ucd.dir/src/tostring.c.o
+[3/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/mnemonics.c.o
+[4/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/ieee80.c.o
+[5/178] Building C object _deps/espeak_ng-build-local/src/ucd-tools/CMakeFiles/ucd.dir/src/case.c.o
+[6/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/common.c.o
+[7/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/error.c.o
+[8/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/encoding.c.o
+[9/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/langopts.c.o
+[10/178] Building C object _deps/espeak_ng-build-local/src/CMakeFiles/espeak-ng-bin.dir/espeak-ng.c.o
+[11/178] Building C object _deps/espeak_ng-build-local/src/ucd-tools/CMakeFiles/ucd.dir/src/categories.c.o
+[12/178] Building C object _deps/espeak_ng-build-local/src/ucd-tools/CMakeFiles/ucd.dir/src/scripts.c.o
+[13/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/intonation.c.o
+[14/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/phoneme.c.o
+[15/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/soundicon.c.o
+[16/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/phonemelist.c.o
+[17/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/setlengths.c.o
+[18/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/readclause.c.o
+[19/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/spect.c.o
+[20/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/espeak_api.c.o
+[21/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/synthdata.c.o
+[22/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/ssml.c.o
+[23/178] Building CXX object _deps/piper_phonemize-build-local/CMakeFiles/piper_phonemize.dir/src/shared.cpp.o
+[24/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/translateword.c.o
+[25/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/tr_languages.c.o
+[26/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/numbers.c.o
+[27/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/compiledict.c.o
+[28/178] Building C object _deps/espeak_ng-build-local/src/ucd-tools/CMakeFiles/ucd.dir/src/proplist.c.o
+[29/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/translate.c.o
+[30/178] Linking C static library _deps/espeak_ng-build-local/src/ucd-tools/libucd.a
+[31/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/speech.c.o
+[32/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/sPlayer.c.o
+[33/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/klatt.c.o
+[34/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/synthesize.c.o
+[35/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/wavegen.c.o
+[36/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/voices.c.o
+[37/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/compiledata.c.o
+[38/178] Building C object _deps/espeak_ng-build-local/src/libespeak-ng/CMakeFiles/espeak-ng.dir/dictionary.c.o
+[39/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/frontend_router.cpp.o
+[40/178] Building CXX object _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/speechPlayer.cpp.o
+[41/178] Building CXX object _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/speechWaveGenerator.cpp.o
+FAILED: _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/speechWaveGenerator.cpp.o 
+/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -I/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/speechPlayer/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -fPIC -MD -MT _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/speechWaveGenerator.cpp.o -MF _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/speechWaveGenerator.cpp.o.d -o _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/speechWaveGenerator.cpp.o -c /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/speechPlayer/src/speechWaveGenerator.cpp
+/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/speechPlayer/src/speechWaveGenerator.cpp:197:56: error: reference to 'sample' is ambiguous
+  197 |         unsigned int generate(const unsigned int sampleCount, sample* sampleBuf) {
+      |                                                               ^
+/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/speechPlayer/src/sample.h:23:3: note: candidate found by name lookup is 'sample'
+   23 | } sample;
+      |   ^
+/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1/__algorithm/sample.h:105:1: note: candidate found by name lookup is 'std::sample'
+  105 | sample(_PopulationIterator __first,
+      | ^
+1 error generated.
+[42/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/wave_writer.cpp.o
+[43/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/espeak_phonemize.cpp.o
+[44/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/token_table.cpp.o
+[45/178] Building CXX object _deps/espeak_ng-build-local/src/speechPlayer/CMakeFiles/speechPlayer.dir/src/frame.cpp.o
+[46/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/lexicon.cpp.o
+[47/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/tts_jni.cpp.o
+[48/178] Building CXX object _deps/piper_phonemize-build-local/CMakeFiles/piper_phonemize.dir/src/phoneme_ids.cpp.o
+[49/178] Building CXX object CMakeFiles/sherpa-tts-jni.dir/vits_engine.cpp.o
+[50/178] Building CXX object _deps/piper_phonemize-build-local/CMakeFiles/piper_phonemize.dir/src/phonemize.cpp.o
+ninja: build stopped: subcommand failed.

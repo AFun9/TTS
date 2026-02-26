@@ -1,0 +1,198 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "_deps/espeak_ng-build-local",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.espeak_ng-build-local-RelWithDebInfo-966374c41ca108505c3c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng"
+				},
+				{
+					"build" : "_deps/espeak_ng-build-local/src",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"jsonFile" : "directory-_deps.espeak_ng-build-local.src-RelWithDebInfo-44b7d6907eb04626b813.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src"
+				},
+				{
+					"build" : "_deps/espeak_ng-build-local/src/ucd-tools",
+					"jsonFile" : "directory-_deps.espeak_ng-build-local.src.ucd-tools-RelWithDebInfo-65ed2b2cfbdfe73bed40.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/ucd-tools",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "_deps/espeak_ng-build-local/src/libespeak-ng",
+					"jsonFile" : "directory-_deps.espeak_ng-build-local.src.libespeak-ng-RelWithDebInfo-d785e204761dc3be03e0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/libespeak-ng",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "_deps/piper_phonemize-build-local",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.piper_phonemize-build-local-RelWithDebInfo-56f8cf26211b396b9145.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/piper-phonemize",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "sherpa-tts-jni",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "espeak-ng",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "piper_phonemize",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "espeak-ng::@a91aae091242a72d3363",
+					"jsonFile" : "target-espeak-ng-RelWithDebInfo-e8d254664104929d6cdc.json",
+					"name" : "espeak-ng",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "piper_phonemize::@274947d7ce9986cf29f0",
+					"jsonFile" : "target-piper_phonemize-RelWithDebInfo-5ad53523081ddb33133c.json",
+					"name" : "piper_phonemize",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sherpa-tts-jni::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sherpa-tts-jni-RelWithDebInfo-fe3c88102dc2eb59ada1.json",
+					"name" : "sherpa-tts-jni",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ucd::@0609626eed16f09651ec",
+					"jsonFile" : "target-ucd-RelWithDebInfo-2a4174117ecf156b775a.json",
+					"name" : "ucd",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/RelWithDebInfo/5r30712s/arm64-v8a",
+		"source" : "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

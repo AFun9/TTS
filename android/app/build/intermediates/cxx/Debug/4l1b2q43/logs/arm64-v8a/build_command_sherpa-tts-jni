@@ -1,0 +1,4 @@
+/home/model/Android/Sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/4l1b2q43/arm64-v8a \
+  sherpa-tts-jni

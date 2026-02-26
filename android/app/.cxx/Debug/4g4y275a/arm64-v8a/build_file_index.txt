@@ -1,0 +1,8 @@
+/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt
+/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/cmake/espeak-ng-for-piper.cmake
+/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/cmake/piper-phonemize.cmake
+/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/CMakeLists.txt
+/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/CMakeLists.txt
+/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/libespeak-ng/CMakeLists.txt
+/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src/ucd-tools/CMakeLists.txt
+/home/model/tools/sherpa-tts-wrapper/android/third_party/piper-phonemize/CMakeLists.txt

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "_deps/espeak_ng-build-local/src",
+		"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/src"
+	}
+}

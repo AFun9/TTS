@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="error">#B00020</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#000000</color>
+    <color name="on_surface">#212121</color>
+    <color name="outline">#757575</color>
+    <color name="primary">#1976D2</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="primary_variant">#0D47A1</color>
+    <color name="secondary">#03DAC6</color>
+    <color name="surface">#FAFAFA</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Sherpa TTS</string>
+    <string name="btn_generate">生成语音</string>
+    <string name="btn_stop">停止</string>
+    <string name="export_audio">导出音频</string>
+    <string name="hint_text_input">输入要合成的文本…</string>
+    <string name="import_text">导入文本</string>
+    <string name="speed_label">语速</string>
+    <string name="status_idle">就绪</string>
+    <string name="status_loading">正在生成语音…</string>
+    <string name="status_playing">正在播放</string>
+    <string name="status_stopped">已停止</string>
+    <string name="status_success">生成成功</string>
+    <string name="toast_enter_text">请输入文本</string>
+    <string name="toast_generate_success">语音生成成功</string>
+    <string name="toast_storage_required">需要存储权限才能使用应用</string>
+    <string name="volume_label">音量</string>
+    <style name="Theme.SherpaTTS" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/secondary</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.k2fsa.sherpa.tts.app-mergeDebugResources-35:/layout/activity_main.xml",
+        "source": "com.k2fsa.sherpa.tts.app-main-38:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/model/.gradle/daemon/8.9/com.k2fsa.sherpa.tts.app-mergeDebugResources-35:/layout/activity_main.xml",
+        "source": "/home/model/.gradle/daemon/8.9/com.k2fsa.sherpa.tts.app-main-38:/layout/activity_main.xml"
+    }
+]

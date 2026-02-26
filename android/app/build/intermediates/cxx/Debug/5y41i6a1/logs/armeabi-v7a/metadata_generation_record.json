@@ -1,0 +1,119 @@
+[
+  {
+    "level_": 0,
+    "message_": "Start JSON generation. Platform version: 24 min SDK version: armeabi-v7a",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "rebuilding JSON /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/android_gradle_build.json due to:",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "- no fingerprint file, will remove stale configuration folder",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "removing stale contents from \u0027/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a\u0027",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "created folder \u0027/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a\u0027",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "executing cmake /home/model/Android/Sdk/cmake/3.22.1/bin/cmake \\\n  -H/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d24 \\\n  -DANDROID_PLATFORM\u003dandroid-24 \\\n  -DANDROID_ABI\u003darmeabi-v7a \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003darmeabi-v7a \\\n  -DANDROID_NDK\u003d/home/model/Android/Sdk/ndk/27.0.12077973 \\\n  -DCMAKE_ANDROID_NDK\u003d/home/model/Android/Sdk/ndk/27.0.12077973 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/home/model/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/home/model/Android/Sdk/cmake/3.22.1/bin/ninja \\\n  -DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/armeabi-v7a \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/armeabi-v7a \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a \\\n  -GNinja \\\n  -DSHERPA_TTS_ENABLE_ESPEAK_NG\u003dON \\\n  -DONNXRUNTIME_INCLUDE_DIR\u003d/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime/include \\\n  -DONNXRUNTIME_LIB_DIR\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/onnxruntime/lib\n",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "/home/model/Android/Sdk/cmake/3.22.1/bin/cmake \\\n  -H/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d24 \\\n  -DANDROID_PLATFORM\u003dandroid-24 \\\n  -DANDROID_ABI\u003darmeabi-v7a \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003darmeabi-v7a \\\n  -DANDROID_NDK\u003d/home/model/Android/Sdk/ndk/27.0.12077973 \\\n  -DCMAKE_ANDROID_NDK\u003d/home/model/Android/Sdk/ndk/27.0.12077973 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/home/model/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/home/model/Android/Sdk/cmake/3.22.1/bin/ninja \\\n  -DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/armeabi-v7a \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/armeabi-v7a \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a \\\n  -GNinja \\\n  -DSHERPA_TTS_ENABLE_ESPEAK_NG\u003dON \\\n  -DONNXRUNTIME_INCLUDE_DIR\u003d/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime/include \\\n  -DONNXRUNTIME_LIB_DIR\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/onnxruntime/lib\n",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "Received process result: 1",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  },
+  {
+    "level_": 0,
+    "message_": "JSON generation completed with problem. Exception: com.android.ide.common.process.ProcessException: -- The C compiler identification is Clang 18.0.1\n-- The CXX compiler identification is Clang 18.0.1\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: /home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Downloading espeak-ng from https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\n-- Configuring incomplete, errors occurred!\nSee also \"/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/CMakeFiles/CMakeOutput.log\".\n\nC++ build system [configure] failed while executing:\n    /home/model/Android/Sdk/cmake/3.22.1/bin/cmake \\\n      -H/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp \\\n      -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n      -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n      -DCMAKE_SYSTEM_VERSION\u003d24 \\\n      -DANDROID_PLATFORM\u003dandroid-24 \\\n      -DANDROID_ABI\u003darmeabi-v7a \\\n      -DCMAKE_ANDROID_ARCH_ABI\u003darmeabi-v7a \\\n      -DANDROID_NDK\u003d/home/model/Android/Sdk/ndk/27.0.12077973 \\\n      -DCMAKE_ANDROID_NDK\u003d/home/model/Android/Sdk/ndk/27.0.12077973 \\\n      -DCMAKE_TOOLCHAIN_FILE\u003d/home/model/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake \\\n      -DCMAKE_MAKE_PROGRAM\u003d/home/model/Android/Sdk/cmake/3.22.1/bin/ninja \\\n      -DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 \\\n      -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/armeabi-v7a \\\n      -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/armeabi-v7a \\\n      -DCMAKE_BUILD_TYPE\u003dDebug \\\n      -B/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a \\\n      -GNinja \\\n      -DSHERPA_TTS_ENABLE_ESPEAK_NG\u003dON \\\n      -DONNXRUNTIME_INCLUDE_DIR\u003d/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime/include \\\n      -DONNXRUNTIME_LIB_DIR\u003d/home/model/tools/sherpa-tts-wrapper/android/app/build/onnxruntime/lib\n  from /home/model/tools/sherpa-tts-wrapper/android/app\n[1/9] Creating directories for \u0027espeak_ng-populate\u0027\n[1/9] Performing download step (download, verify and extract) for \u0027espeak_ng-populate\u0027\n-- Downloading...\n   dst\u003d\u0027/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\u0027\n   timeout\u003d\u0027none\u0027\n   inactivity timeout\u003d\u0027none\u0027\n-- Using src\u003d\u0027https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\u0027\n-- Using src\u003d\u0027https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\u0027\nCMake Error at espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/download-espeak_ng-populate.cmake:170 (message):\n  Each download failed!\n\n    error: downloading \u0027https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\u0027 failed\n          status_code: 35\n          status_string: \"SSL connect error\"\n          log:\n          --- LOG BEGIN ---\n          Uses proxy env variable no_proxy \u003d\u003d \u0027localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1\u0027\n\n  Uses proxy env variable https_proxy \u003d\u003d \u0027http://127.0.0.1:7897/\u0027\n\n    Trying 127.0.0.1:7897...\n\n  Connected to 127.0.0.1 (127.0.0.1) port 7897 (#0)\n\n  allocate connect buffer!\n\n  Establish HTTP proxy tunnel to github.com:443\n\n  CONNECT github.com:443 HTTP/1.1\n\n  Host: github.com:443\n\n  User-Agent: curl/7.79.1\n\n  Proxy-Connection: Keep-Alive\n\n  \n\n  HTTP/1.1 200 Connection established\n\n  \n\n  Proxy replied 200 to CONNECT request\n\n  CONNECT phase completed!\n\n  ALPN, offering h2\n\n  ALPN, offering http/1.1\n\n  successfully set certificate verify locations:\n\n   CAfile: /etc/ssl/certs/ca-certificates.crt\n   CApath: /etc/ssl/certs\n\n  [5 bytes data]\n\n  TLSv1.3 (OUT), TLS handshake, Client hello (1):\n\n  [512 bytes data]\n\n  [5 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, Server hello (2):\n\n  [122 bytes data]\n\n  [5 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):\n\n  [19 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, Certificate (11):\n\n  [2740 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, CERT verify (15):\n\n  [79 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, Finished (20):\n\n  [36 bytes data]\n\n  [5 bytes data]\n\n  TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (OUT), TLS handshake, Finished (20):\n\n  [36 bytes data]\n\n  SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256\n\n  ALPN, server accepted to use h2\n\n  Server certificate:\n\n   subject: CN\u003dgithub.com\n   start date: Jan  6 00:00:00 2026 GMT\n   expire date: Apr  5 23:59:59 2026 GMT\n   subjectAltName: host \"github.com\" matched cert\u0027s \"github.com\"\n   issuer: C\u003dGB; O\u003dSectigo Limited; CN\u003dSectigo Public Server Authentication CA DV E36\n   SSL certificate verify ok.\n\n  Using HTTP2, server supports multiplexing\n\n  Connection state changed (HTTP/2 confirmed)\n\n  Copying HTTP/2 data in stream buffer to connection buffer after upgrade:\n  len\u003d0\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  Using Stream ID: 1 (easy handle 0x2fd18f70)\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  GET\n  /csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\n  HTTP/2\n\n  Host: github.com\n\n  user-agent: curl/7.79.1\n\n  accept: */*\n\n  \n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):\n\n  [57 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):\n\n  [57 bytes data]\n\n  old SSL session ID is stale, removing\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  [5 bytes data]\n\n  [1 bytes data]\n\n  HTTP/2 302 \n\n  date: Wed, 25 Feb 2026 03:40:34 GMT\n\n  content-type: text/html; charset\u003dutf-8\n\n  content-length: 0\n\n  vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With,\n  Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With\n\n  location:\n  https://codeload.github.com/csukuangfj/espeak-ng/zip/f6fed6c58b5e0998b8e68c6610125e2d07d595a7\n\n\n  cache-control: max-age\u003d0, private\n\n  strict-transport-security: max-age\u003d31536000; includeSubdomains; preload\n\n  x-frame-options: deny\n\n  x-content-type-options: nosniff\n\n  x-xss-protection: 0\n\n  referrer-policy: no-referrer-when-downgrade\n\n  content-security-policy: default-src \u0027none\u0027; base-uri \u0027self\u0027; child-src\n  github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/\n  gist.github.com/assets-cdn/worker/; connect-src \u0027self\u0027 uploads.github.com\n  www.githubstatus.com collector.github.com raw.githubusercontent.com\n  api.github.com github-cloud.s3.amazonaws.com\n  github-production-repository-file-5c1aeb.s3.amazonaws.com\n  github-production-upload-manifest-file-7fdce7.s3.amazonaws.com\n  github-production-user-asset-6210df.s3.amazonaws.com\n  *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com\n  github.githubassets.com objects-origin.githubusercontent.com\n  copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com\n  proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com\n  *.actions.githubusercontent.com wss://*.actions.githubusercontent.com\n  productionresultssa0.blob.core.windows.net/\n  productionresultssa1.blob.core.windows.net/\n  productionresultssa2.blob.core.windows.net/\n  productionresultssa3.blob.core.windows.net/\n  productionresultssa4.blob.core.windows.net/\n  productionresultssa5.blob.core.windows.net/\n  productionresultssa6.blob.core.windows.net/\n  productionresultssa7.blob.core.windows.net/\n  productionresultssa8.blob.core.windows.net/\n  productionresultssa9.blob.core.windows.net/\n  productionresultssa10.blob.core.windows.net/\n  productionresultssa11.blob.core.windows.net/\n  productionresultssa12.blob.core.windows.net/\n  productionresultssa13.blob.core.windows.net/\n  productionresultssa14.blob.core.windows.net/\n  productionresultssa15.blob.core.windows.net/\n  productionresultssa16.blob.core.windows.net/\n  productionresultssa17.blob.core.windows.net/\n  productionresultssa18.blob.core.windows.net/\n  productionresultssa19.blob.core.windows.net/\n  github-production-repository-image-32fea6.s3.amazonaws.com\n  github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com\n  wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com\n  api.individual.githubcopilot.com api.business.githubcopilot.com\n  api.enterprise.githubcopilot.com; font-src github.githubassets.com;\n  form-action \u0027self\u0027 github.com gist.github.com\n  copilot-workspace.githubnext.com objects-origin.githubusercontent.com;\n  frame-ancestors \u0027none\u0027; frame-src viewscreen.githubusercontent.com\n  notebooks.githubusercontent.com; img-src \u0027self\u0027 data: blob:\n  github.githubassets.com media.githubusercontent.com\n  camo.githubusercontent.com identicons.github.com\n  avatars.githubusercontent.com private-avatars.githubusercontent.com\n  github-cloud.s3.amazonaws.com objects.githubusercontent.com\n  release-assets.githubusercontent.com\n  secured-user-images.githubusercontent.com/\n  user-images.githubusercontent.com/\n  private-user-images.githubusercontent.com opengraph.githubassets.com\n  marketplace-screenshots.githubusercontent.com/\n  copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/\n  github-production-user-asset-6210df.s3.amazonaws.com\n  customer-stories-feed.github.com spotlights-feed.github.com\n  objects-origin.githubusercontent.com *.githubusercontent.com; manifest-src\n  \u0027self\u0027; media-src github.com user-images.githubusercontent.com/\n  secured-user-images.githubusercontent.com/\n  private-user-images.githubusercontent.com\n  github-production-user-asset-6210df.s3.amazonaws.com gist.github.com\n  github.githubassets.com; script-src github.githubassets.com; style-src\n  \u0027unsafe-inline\u0027 github.githubassets.com; upgrade-insecure-requests;\n  worker-src github.githubassets.com github.com/assets-cdn/worker/\n  github.com/assets/ gist.github.com/assets-cdn/worker/\n\n  server: github.com\n\n  x-github-request-id: 86B0:3AEB83:6CAD2:77DD8:699E6F32\n\n  \n\n  [0 bytes data]\n\n  Connection #0 to host 127.0.0.1 left intact\n\n  Issue another request to this URL:\n  \u0027https://codeload.github.com/csukuangfj/espeak-ng/zip/f6fed6c58b5e0998b8e68c6610125e2d07d595a7\u0027\n\n\n  Uses proxy env variable no_proxy \u003d\u003d\n  \u0027localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1\u0027\n\n  Uses proxy env variable https_proxy \u003d\u003d \u0027http://127.0.0.1:7897/\u0027\n\n  Hostname 127.0.0.1 was found in DNS cache\n\n    Trying 127.0.0.1:7897...\n\n  Connected to 127.0.0.1 (127.0.0.1) port 7897 (#1)\n\n  allocate connect buffer!\n\n  Establish HTTP proxy tunnel to codeload.github.com:443\n\n  CONNECT codeload.github.com:443 HTTP/1.1\n\n  Host: codeload.github.com:443\n\n  User-Agent: curl/7.79.1\n\n  Proxy-Connection: Keep-Alive\n\n  \n\n  HTTP/1.1 200 Connection established\n\n  \n\n  Proxy replied 200 to CONNECT request\n\n  CONNECT phase completed!\n\n  ALPN, offering h2\n\n  ALPN, offering http/1.1\n\n  successfully set certificate verify locations:\n\n   CAfile: /etc/ssl/certs/ca-certificates.crt\n   CApath: /etc/ssl/certs\n\n  [5 bytes data]\n\n  TLSv1.3 (OUT), TLS handshake, Client hello (1):\n\n  [512 bytes data]\n\n  OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to\n  codeload.github.com:443\n\n  Closing connection 1\n\n  \n\n          --- LOG END ---\n          error: downloading \u0027https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip\u0027 failed\n          status_code: 35\n          status_string: \"SSL connect error\"\n          log:\n          --- LOG BEGIN ---\n          Uses proxy env variable no_proxy \u003d\u003d \u0027localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1\u0027\n\n  Uses proxy env variable https_proxy \u003d\u003d \u0027http://127.0.0.1:7897/\u0027\n\n    Trying 127.0.0.1:7897...\n\n  Connected to 127.0.0.1 (127.0.0.1) port 7897 (#0)\n\n  allocate connect buffer!\n\n  Establish HTTP proxy tunnel to hf-mirror.com:443\n\n  CONNECT hf-mirror.com:443 HTTP/1.1\n\n  Host: hf-mirror.com:443\n\n  User-Agent: curl/7.79.1\n\n  Proxy-Connection: Keep-Alive\n\n  \n\n  HTTP/1.1 200 Connection established\n\n  \n\n  Proxy replied 200 to CONNECT request\n\n  CONNECT phase completed!\n\n  ALPN, offering h2\n\n  ALPN, offering http/1.1\n\n  successfully set certificate verify locations:\n\n   CAfile: /etc/ssl/certs/ca-certificates.crt\n   CApath: /etc/ssl/certs\n\n  [5 bytes data]\n\n  TLSv1.3 (OUT), TLS handshake, Client hello (1):\n\n  [512 bytes data]\n\n  OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to hf-mirror.com:443\n\n  Closing connection 0\n\n  \n\n          --- LOG END ---\n          \n    \n\n\nFAILED: espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download \ncd /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps \u0026\u0026 /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -P /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/download-espeak_ng-populate.cmake \u0026\u0026 /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -P /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/verify-espeak_ng-populate.cmake \u0026\u0026 /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -P /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/extract-espeak_ng-populate.cmake \u0026\u0026 /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -E touch /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download\nninja: build stopped: subcommand failed.\n\nCMake Error at /home/model/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/FetchContent.cmake:1087 (message):\n  Build step for espeak_ng failed: 1\nCall Stack (most recent call first):\n  /home/model/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/FetchContent.cmake:1216:EVAL:2 (__FetchContent_directPopulate)\n  /home/model/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/FetchContent.cmake:1216 (cmake_language)\n  cmake/espeak-ng-for-piper.cmake:42 (FetchContent_Populate)\n  cmake/espeak-ng-for-piper.cmake:63 (download_espeak_ng_for_piper)\n  CMakeLists.txt:32 (include)",
+    "file_": "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "tag_": "debug|armeabi-v7a",
+    "diagnosticCode_": 0,
+    "memoizedIsInitialized": 1,
+    "unknownFields": {
+      "fields": {}
+    },
+    "memoizedSize": -1,
+    "memoizedHashCode": 0
+  }
+]

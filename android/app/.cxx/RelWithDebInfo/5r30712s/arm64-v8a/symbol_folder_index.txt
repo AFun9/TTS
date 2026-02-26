@@ -1,0 +1,1 @@
+/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/RelWithDebInfo/5r30712s/obj/arm64-v8a

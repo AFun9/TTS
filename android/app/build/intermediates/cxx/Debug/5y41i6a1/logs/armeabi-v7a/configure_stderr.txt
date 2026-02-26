@@ -1,0 +1,439 @@
+[1/9] Creating directories for 'espeak_ng-populate'
+[1/9] Performing download step (download, verify and extract) for 'espeak_ng-populate'
+-- Downloading...
+   dst='/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip'
+   timeout='none'
+   inactivity timeout='none'
+-- Using src='https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip'
+-- Using src='https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip'
+CMake Error at espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/download-espeak_ng-populate.cmake:170 (message):
+  Each download failed!
+
+    error: downloading 'https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip' failed
+          status_code: 35
+          status_string: "SSL connect error"
+          log:
+          --- LOG BEGIN ---
+          Uses proxy env variable no_proxy == 'localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1'
+
+  Uses proxy env variable https_proxy == 'http://127.0.0.1:7897/'
+
+    Trying 127.0.0.1:7897...
+
+  Connected to 127.0.0.1 (127.0.0.1) port 7897 (#0)
+
+  allocate connect buffer!
+
+  Establish HTTP proxy tunnel to github.com:443
+
+  CONNECT github.com:443 HTTP/1.1
+
+  Host: github.com:443
+
+  User-Agent: curl/7.79.1
+
+  Proxy-Connection: Keep-Alive
+
+  
+
+  HTTP/1.1 200 Connection established
+
+  
+
+  Proxy replied 200 to CONNECT request
+
+  CONNECT phase completed!
+
+  ALPN, offering h2
+
+  ALPN, offering http/1.1
+
+  successfully set certificate verify locations:
+
+   CAfile: /etc/ssl/certs/ca-certificates.crt
+   CApath: /etc/ssl/certs
+
+  [5 bytes data]
+
+  TLSv1.3 (OUT), TLS handshake, Client hello (1):
+
+  [512 bytes data]
+
+  [5 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, Server hello (2):
+
+  [122 bytes data]
+
+  [5 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+
+  [19 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, Certificate (11):
+
+  [2740 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, CERT verify (15):
+
+  [79 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, Finished (20):
+
+  [36 bytes data]
+
+  [5 bytes data]
+
+  TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (OUT), TLS handshake, Finished (20):
+
+  [36 bytes data]
+
+  SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+
+  ALPN, server accepted to use h2
+
+  Server certificate:
+
+   subject: CN=github.com
+   start date: Jan  6 00:00:00 2026 GMT
+   expire date: Apr  5 23:59:59 2026 GMT
+   subjectAltName: host "github.com" matched cert's "github.com"
+   issuer: C=GB; O=Sectigo Limited; CN=Sectigo Public Server Authentication CA DV E36
+   SSL certificate verify ok.
+
+  Using HTTP2, server supports multiplexing
+
+  Connection state changed (HTTP/2 confirmed)
+
+  Copying HTTP/2 data in stream buffer to connection buffer after upgrade:
+  len=0
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  Using Stream ID: 1 (easy handle 0x2fd18f70)
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  GET
+  /csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip
+  HTTP/2
+
+  Host: github.com
+
+  user-agent: curl/7.79.1
+
+  accept: */*
+
+  
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+
+  [57 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+
+  [57 bytes data]
+
+  old SSL session ID is stale, removing
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  [5 bytes data]
+
+  [1 bytes data]
+
+  HTTP/2 302 
+
+  date: Wed, 25 Feb 2026 03:40:34 GMT
+
+  content-type: text/html; charset=utf-8
+
+  content-length: 0
+
+  vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With,
+  Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With
+
+  location:
+  https://codeload.github.com/csukuangfj/espeak-ng/zip/f6fed6c58b5e0998b8e68c6610125e2d07d595a7
+
+
+  cache-control: max-age=0, private
+
+  strict-transport-security: max-age=31536000; includeSubdomains; preload
+
+  x-frame-options: deny
+
+  x-content-type-options: nosniff
+
+  x-xss-protection: 0
+
+  referrer-policy: no-referrer-when-downgrade
+
+  content-security-policy: default-src 'none'; base-uri 'self'; child-src
+  github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/
+  gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com
+  www.githubstatus.com collector.github.com raw.githubusercontent.com
+  api.github.com github-cloud.s3.amazonaws.com
+  github-production-repository-file-5c1aeb.s3.amazonaws.com
+  github-production-upload-manifest-file-7fdce7.s3.amazonaws.com
+  github-production-user-asset-6210df.s3.amazonaws.com
+  *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com
+  github.githubassets.com objects-origin.githubusercontent.com
+  copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com
+  proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com
+  *.actions.githubusercontent.com wss://*.actions.githubusercontent.com
+  productionresultssa0.blob.core.windows.net/
+  productionresultssa1.blob.core.windows.net/
+  productionresultssa2.blob.core.windows.net/
+  productionresultssa3.blob.core.windows.net/
+  productionresultssa4.blob.core.windows.net/
+  productionresultssa5.blob.core.windows.net/
+  productionresultssa6.blob.core.windows.net/
+  productionresultssa7.blob.core.windows.net/
+  productionresultssa8.blob.core.windows.net/
+  productionresultssa9.blob.core.windows.net/
+  productionresultssa10.blob.core.windows.net/
+  productionresultssa11.blob.core.windows.net/
+  productionresultssa12.blob.core.windows.net/
+  productionresultssa13.blob.core.windows.net/
+  productionresultssa14.blob.core.windows.net/
+  productionresultssa15.blob.core.windows.net/
+  productionresultssa16.blob.core.windows.net/
+  productionresultssa17.blob.core.windows.net/
+  productionresultssa18.blob.core.windows.net/
+  productionresultssa19.blob.core.windows.net/
+  github-production-repository-image-32fea6.s3.amazonaws.com
+  github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com
+  wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com
+  api.individual.githubcopilot.com api.business.githubcopilot.com
+  api.enterprise.githubcopilot.com; font-src github.githubassets.com;
+  form-action 'self' github.com gist.github.com
+  copilot-workspace.githubnext.com objects-origin.githubusercontent.com;
+  frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com
+  notebooks.githubusercontent.com; img-src 'self' data: blob:
+  github.githubassets.com media.githubusercontent.com
+  camo.githubusercontent.com identicons.github.com
+  avatars.githubusercontent.com private-avatars.githubusercontent.com
+  github-cloud.s3.amazonaws.com objects.githubusercontent.com
+  release-assets.githubusercontent.com
+  secured-user-images.githubusercontent.com/
+  user-images.githubusercontent.com/
+  private-user-images.githubusercontent.com opengraph.githubassets.com
+  marketplace-screenshots.githubusercontent.com/
+  copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/
+  github-production-user-asset-6210df.s3.amazonaws.com
+  customer-stories-feed.github.com spotlights-feed.github.com
+  objects-origin.githubusercontent.com *.githubusercontent.com; manifest-src
+  'self'; media-src github.com user-images.githubusercontent.com/
+  secured-user-images.githubusercontent.com/
+  private-user-images.githubusercontent.com
+  github-production-user-asset-6210df.s3.amazonaws.com gist.github.com
+  github.githubassets.com; script-src github.githubassets.com; style-src
+  'unsafe-inline' github.githubassets.com; upgrade-insecure-requests;
+  worker-src github.githubassets.com github.com/assets-cdn/worker/
+  github.com/assets/ gist.github.com/assets-cdn/worker/
+
+  server: github.com
+
+  x-github-request-id: 86B0:3AEB83:6CAD2:77DD8:699E6F32
+
+  
+
+  [0 bytes data]
+
+  Connection #0 to host 127.0.0.1 left intact
+
+  Issue another request to this URL:
+  'https://codeload.github.com/csukuangfj/espeak-ng/zip/f6fed6c58b5e0998b8e68c6610125e2d07d595a7'
+
+
+  Uses proxy env variable no_proxy ==
+  'localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1'
+
+  Uses proxy env variable https_proxy == 'http://127.0.0.1:7897/'
+
+  Hostname 127.0.0.1 was found in DNS cache
+
+    Trying 127.0.0.1:7897...
+
+  Connected to 127.0.0.1 (127.0.0.1) port 7897 (#1)
+
+  allocate connect buffer!
+
+  Establish HTTP proxy tunnel to codeload.github.com:443
+
+  CONNECT codeload.github.com:443 HTTP/1.1
+
+  Host: codeload.github.com:443
+
+  User-Agent: curl/7.79.1
+
+  Proxy-Connection: Keep-Alive
+
+  
+
+  HTTP/1.1 200 Connection established
+
+  
+
+  Proxy replied 200 to CONNECT request
+
+  CONNECT phase completed!
+
+  ALPN, offering h2
+
+  ALPN, offering http/1.1
+
+  successfully set certificate verify locations:
+
+   CAfile: /etc/ssl/certs/ca-certificates.crt
+   CApath: /etc/ssl/certs
+
+  [5 bytes data]
+
+  TLSv1.3 (OUT), TLS handshake, Client hello (1):
+
+  [512 bytes data]
+
+  OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to
+  codeload.github.com:443
+
+  Closing connection 1
+
+  
+
+          --- LOG END ---
+          error: downloading 'https://hf-mirror.com/csukuangfj/sherpa-onnx-cmake-deps/resolve/main/espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip' failed
+          status_code: 35
+          status_string: "SSL connect error"
+          log:
+          --- LOG BEGIN ---
+          Uses proxy env variable no_proxy == 'localhost,127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1'
+
+  Uses proxy env variable https_proxy == 'http://127.0.0.1:7897/'
+
+    Trying 127.0.0.1:7897...
+
+  Connected to 127.0.0.1 (127.0.0.1) port 7897 (#0)
+
+  allocate connect buffer!
+
+  Establish HTTP proxy tunnel to hf-mirror.com:443
+
+  CONNECT hf-mirror.com:443 HTTP/1.1
+
+  Host: hf-mirror.com:443
+
+  User-Agent: curl/7.79.1
+
+  Proxy-Connection: Keep-Alive
+
+  
+
+  HTTP/1.1 200 Connection established
+
+  
+
+  Proxy replied 200 to CONNECT request
+
+  CONNECT phase completed!
+
+  ALPN, offering h2
+
+  ALPN, offering http/1.1
+
+  successfully set certificate verify locations:
+
+   CAfile: /etc/ssl/certs/ca-certificates.crt
+   CApath: /etc/ssl/certs
+
+  [5 bytes data]
+
+  TLSv1.3 (OUT), TLS handshake, Client hello (1):
+
+  [512 bytes data]
+
+  OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to hf-mirror.com:443
+
+  Closing connection 0
+
+  
+
+          --- LOG END ---
+          
+    
+
+
+FAILED: espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download 
+cd /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps && /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -P /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/download-espeak_ng-populate.cmake && /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -P /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/verify-espeak_ng-populate.cmake && /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -P /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/extract-espeak_ng-populate.cmake && /home/model/Android/Sdk/cmake/3.22.1/bin/cmake -E touch /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/armeabi-v7a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download
+ninja: build stopped: subcommand failed.
+
+CMake Error at /home/model/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/FetchContent.cmake:1087 (message):
+  Build step for espeak_ng failed: 1
+Call Stack (most recent call first):
+  /home/model/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/FetchContent.cmake:1216:EVAL:2 (__FetchContent_directPopulate)
+  /home/model/Android/Sdk/cmake/3.22.1/share/cmake-3.22/Modules/FetchContent.cmake:1216 (cmake_language)
+  cmake/espeak-ng-for-piper.cmake:42 (FetchContent_Populate)
+  cmake/espeak-ng-for-piper.cmake:63 (download_espeak_ng_for_piper)
+  CMakeLists.txt:32 (include)
+
+

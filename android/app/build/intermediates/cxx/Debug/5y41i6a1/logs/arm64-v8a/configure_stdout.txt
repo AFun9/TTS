@@ -1,0 +1,13 @@
+-- Downloading espeak-ng from https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip
+-- Configuration:
+--   shared: OFF
+--   mbrola: OFF (MBROLA_BIN-NOTFOUND)
+--   libsonic: OFF (SONIC_LIB-NOTFOUND SONIC_INC-NOTFOUND)
+--   libpcaudio: OFF (PCAUDIO_LIB-NOTFOUND PCAUDIO_INC-NOTFOUND)
+--   klatt: OFF
+--   speech-player: OFF
+--   async: OFF
+-- Downloading piper-phonemize from https://github.com/csukuangfj/piper-phonemize/archive/78a788e0b719013401572d70fef372e77bff8e43.zip
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a

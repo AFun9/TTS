@@ -1,0 +1,9 @@
+/home/model/Android/Sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/1z4j65w2/arm64-v8a \
+  espeak-ng-bin \
+  sherpa-tts-jni \
+  test_api \
+  test_encoding \
+  test_ieee80 \
+  test_readclause

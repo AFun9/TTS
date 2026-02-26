@@ -1,0 +1,21 @@
+# ninja log v5
+0	5	1771990549881680163	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-mkdir	fe8011f8ad71e1f2
+45810	45812	1771990595689457688	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-patch	f6de446cad7d342b
+45813	45815	1771990595693457669	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-build	27d63a4836b9a90d
+45815	45816	1771990595693457669	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-install	d1653a8195d0c8bb
+5	45809	1771990595685457707	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-download	d664addc4b8e907b
+0	5	1771990549881680163	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-mkdir	fe8011f8ad71e1f2
+5	45809	1771990595685457707	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-download	d664addc4b8e907b
+45809	45810	1771990595689457688	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-update	a7ce44b9fcd3add2
+45817	45819	1771990595697457649	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-done	c52eb555840746e1
+45812	45813	1771990595689457688	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-configure	b6929fee075624f9
+45817	45819	1771990595697457649	CMakeFiles/piper_phonemize-populate-complete	c52eb555840746e1
+45812	45813	1771990595689457688	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-configure	b6929fee075624f9
+45817	45819	1771990595697457649	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/CMakeFiles/piper_phonemize-populate-complete	c52eb555840746e1
+45813	45815	1771990595693457669	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-build	27d63a4836b9a90d
+45809	45810	1771990595689457688	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-update	a7ce44b9fcd3add2
+45810	45812	1771990595689457688	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-patch	f6de446cad7d342b
+45815	45816	1771990595693457669	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-install	d1653a8195d0c8bb
+45817	45819	1771990595697457649	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-done	c52eb555840746e1
+45816	45817	1771990595697457649	piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-test	edf76fa36082da61
+45816	45817	1771990595697457649	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-subbuild/piper_phonemize-populate-prefix/src/piper_phonemize-populate-stamp/piper_phonemize-populate-test	edf76fa36082da61

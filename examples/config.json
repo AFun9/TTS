@@ -1,0 +1,17 @@
+{
+  "model": {
+    "model_path": "models/russian_vits.onnx",
+    "tokens_path": "models/ru_tokens.txt",
+    "lexicon_path": "lexicons/russian_to_english.txt",
+    "data_dir": "models/espeak-ng-data"
+  },
+  "runtime": {
+    "speaker_id": 0,
+    "speed": 1.0,
+    "debug": false
+  },
+  "output": {
+    "default_format": "wav",
+    "sample_rate": 22050
+  }
+}

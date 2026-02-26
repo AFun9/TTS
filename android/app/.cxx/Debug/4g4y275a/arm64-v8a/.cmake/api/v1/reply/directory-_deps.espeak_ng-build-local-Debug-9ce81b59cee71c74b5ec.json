@@ -1,0 +1,72 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"include"
+		],
+		"files" : 
+		[
+			"/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/cmake/package.cmake",
+			"/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 35,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 54,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/4g4y275a/arm64-v8a/_deps/espeak_ng-build-local/espeak-ng.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "share/vim/vimfiles",
+			"paths" : 
+			[
+				"/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/vim/ftdetect",
+				"/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng/vim/syntax"
+			],
+			"type" : "directory"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "_deps/espeak_ng-build-local",
+		"source" : "/home/model/tools/sherpa-tts-wrapper/android/third_party/espeak-ng"
+	}
+}

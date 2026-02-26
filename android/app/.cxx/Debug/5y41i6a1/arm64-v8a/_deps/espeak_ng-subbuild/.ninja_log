@@ -1,0 +1,21 @@
+# ninja log v5
+18562	18564	1771990549729680901	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-build	dec588cdf06a6252
+5	18558	1771990549721680940	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download	1502c93b193b0fc
+18561	18562	1771990549725680920	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-configure	e22ae5de74f0277f
+18558	18559	1771990549721680940	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-update	1c67101b0a87c2d9
+18564	18565	1771990549729680901	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-install	3af98268b23784d7
+0	5	1771990531169771042	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-mkdir	2374ff1244cb3db6
+18559	18561	1771990549725680920	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-patch	3690f2bd78e99a39
+18567	18568	1771990549733680881	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-done	be8535687d7f7434
+18565	18566	1771990549729680901	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-test	a351d5854c4e9196
+0	5	1771990531169771042	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-mkdir	2374ff1244cb3db6
+18567	18568	1771990549733680881	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/CMakeFiles/espeak_ng-populate-complete	be8535687d7f7434
+18564	18565	1771990549729680901	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-install	3af98268b23784d7
+5	18558	1771990549721680940	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-download	1502c93b193b0fc
+18567	18568	1771990549733680881	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-done	be8535687d7f7434
+18561	18562	1771990549725680920	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-configure	e22ae5de74f0277f
+18558	18559	1771990549721680940	espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-update	1c67101b0a87c2d9
+18562	18564	1771990549729680901	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-build	dec588cdf06a6252
+18559	18561	1771990549725680920	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-patch	3690f2bd78e99a39
+18565	18566	1771990549729680901	/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-subbuild/espeak_ng-populate-prefix/src/espeak_ng-populate-stamp/espeak_ng-populate-test	a351d5854c4e9196
+18567	18568	1771990549733680881	CMakeFiles/espeak_ng-populate-complete	be8535687d7f7434

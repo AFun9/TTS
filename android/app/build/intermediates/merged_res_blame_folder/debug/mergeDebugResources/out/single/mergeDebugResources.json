@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/model/.gradle/daemon/8.9/com.k2fsa.sherpa.tts.app-debug-36:/layout_activity_main.xml.flat",
+        "source": "/home/model/.gradle/daemon/8.9/com.k2fsa.sherpa.tts.app-main-38:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/model/.gradle/daemon/8.9/com.k2fsa.sherpa.tts.app-debug-36:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/model/.gradle/daemon/8.9/com.k2fsa.sherpa.tts.app-main-38:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.k2fsa.sherpa.tts.app-debug-36:/layout_activity_main.xml.flat",
+        "source": "com.k2fsa.sherpa.tts.app-main-38:/layout/activity_main.xml"
+    }
+]

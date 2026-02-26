@@ -1,0 +1,13 @@
+ninja: Entering directory `/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/i2s4o103/arm64-v8a'
+[1/6] Building CXX object CMakeFiles/sherpa-tts-jni.dir/vits_engine.cpp.o
+FAILED: CMakeFiles/sherpa-tts-jni.dir/vits_engine.cpp.o 
+/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/home/model/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DSHERPA_TTS_USE_ONNXRUNTIME=1 -Dsherpa_tts_jni_EXPORTS -I/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp -I/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime-linux-x64-1.23.2/include -I/home/model/tools/sherpa-tts-wrapper/android/build/onnxruntime-linux-x64-1.23.2/include/onnxruntime/core/session -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -MD -MT CMakeFiles/sherpa-tts-jni.dir/vits_engine.cpp.o -MF CMakeFiles/sherpa-tts-jni.dir/vits_engine.cpp.o.d -o CMakeFiles/sherpa-tts-jni.dir/vits_engine.cpp.o -c /home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/vits_engine.cpp
+/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/vits_engine.cpp:7:10: fatal error: 'onnxruntime_cxx_api.h' file not found
+    7 | #include <onnxruntime_cxx_api.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+[2/6] Building CXX object CMakeFiles/sherpa-tts-jni.dir/wave_writer.cpp.o
+[3/6] Building CXX object CMakeFiles/sherpa-tts-jni.dir/tts_jni.cpp.o
+[4/6] Building CXX object CMakeFiles/sherpa-tts-jni.dir/token_table.cpp.o
+[5/6] Building CXX object CMakeFiles/sherpa-tts-jni.dir/lexicon.cpp.o
+ninja: build stopped: subcommand failed.

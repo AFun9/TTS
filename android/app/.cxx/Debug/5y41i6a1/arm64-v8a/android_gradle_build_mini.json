@@ -1,0 +1,192 @@
+{
+  "buildFiles": [
+    "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/CMakeLists.txt",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/CMakeLists.txt",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/libespeak-ng/CMakeLists.txt",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-src/src/ucd-tools/CMakeLists.txt",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-src/CMakeLists.txt",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/CMakeLists.txt",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/cmake/espeak-ng-for-piper.cmake",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/src/main/cpp/cmake/piper-phonemize.cmake"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/model/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/model/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "ContinuousMemCheck::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousMemCheck",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ExperimentalTest::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalTest",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousBuild::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousBuild",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlyTest::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyTest",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "espeak-ng::@d022d621657d817440c6": {
+      "artifactName": "espeak-ng",
+      "abi": "arm64-v8a",
+      "output": "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-build/src/libespeak-ng/libespeak-ng.a",
+      "runtimeFiles": []
+    },
+    "NightlyCoverage::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyCoverage",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousTest::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousTest",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousUpdate::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousUpdate",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ExperimentalStart::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalStart",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousStart::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousStart",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "sherpa-tts-jni::@6890427a1f51a3e7e1df": {
+      "artifactName": "sherpa-tts-jni",
+      "abi": "arm64-v8a",
+      "output": "/home/model/tools/sherpa-tts-wrapper/android/app/build/intermediates/cxx/Debug/5y41i6a1/obj/arm64-v8a/libsherpa-tts-jni.so",
+      "runtimeFiles": []
+    },
+    "ExperimentalConfigure::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalConfigure",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlyBuild::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyBuild",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousCoverage::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousCoverage",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousSubmit::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousSubmit",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ContinuousConfigure::@da1578fa6f85c0c377db": {
+      "artifactName": "ContinuousConfigure",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ExperimentalSubmit::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalSubmit",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ucd::@161e9447431032a96f34": {
+      "artifactName": "ucd",
+      "abi": "arm64-v8a",
+      "output": "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/espeak_ng-build/src/ucd-tools/libucd.a",
+      "runtimeFiles": []
+    },
+    "NightlyUpdate::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyUpdate",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ExperimentalCoverage::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalCoverage",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlyConfigure::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyConfigure",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlyStart::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyStart",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ExperimentalUpdate::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalUpdate",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "Continuous::@da1578fa6f85c0c377db": {
+      "artifactName": "Continuous",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "Nightly::@da1578fa6f85c0c377db": {
+      "artifactName": "Nightly",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlyMemCheck::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyMemCheck",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlySubmit::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlySubmit",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "piper_phonemize::@acdb099e9f03f5e4eb87": {
+      "artifactName": "piper_phonemize",
+      "abi": "arm64-v8a",
+      "output": "/home/model/tools/sherpa-tts-wrapper/android/app/.cxx/Debug/5y41i6a1/arm64-v8a/_deps/piper_phonemize-build/libpiper_phonemize.a",
+      "runtimeFiles": []
+    },
+    "ExperimentalBuild::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalBuild",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "Experimental::@da1578fa6f85c0c377db": {
+      "artifactName": "Experimental",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "NightlyMemoryCheck::@da1578fa6f85c0c377db": {
+      "artifactName": "NightlyMemoryCheck",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    },
+    "ExperimentalMemCheck::@da1578fa6f85c0c377db": {
+      "artifactName": "ExperimentalMemCheck",
+      "abi": "arm64-v8a",
+      "runtimeFiles": []
+    }
+  }
+}
