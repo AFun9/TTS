@@ -141,6 +141,81 @@
             android:text="@string/lexicon_edit"
             android:layout_marginBottom="16dp" />
 
+        <!-- 最近生成 -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/latest_audio"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout
+            android:id="@+id/latestContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="@drawable/history_item_bg"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/latestFileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_audio_yet"
+                android:textSize="12sp"
+                android:ellipsize="middle"
+                android:maxLines="1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/latestFileTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/latestShareButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/share_audio"
+                    android:minWidth="0dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/latestExportButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/export_audio"
+                    android:layout_marginStart="8dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/historyButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history_title"
+                    android:layout_marginStart="8dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
         <!-- 文本输入区域 -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

@@ -13,8 +13,21 @@
         android:roundIcon="@drawable/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.SherpaTTS">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <activity
             android:name=".ui.lexicon.CustomLexiconActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SherpaTTS" />
+        <activity
+            android:name=".ui.history.HistoryActivity"
             android:exported="false"
             android:theme="@style/Theme.SherpaTTS" />
         <activity

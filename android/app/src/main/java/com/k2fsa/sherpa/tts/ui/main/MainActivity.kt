@@ -11,12 +11,16 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
 import com.k2fsa.sherpa.tts.R
 import com.k2fsa.sherpa.tts.databinding.ActivityMainBinding
 import com.k2fsa.sherpa.tts.repository.TTSRepository
+import com.k2fsa.sherpa.tts.ui.history.HistoryActivity
 import com.k2fsa.sherpa.tts.ui.lexicon.CustomLexiconActivity
+import com.k2fsa.sherpa.tts.util.AudioHistoryItem
+import com.k2fsa.sherpa.tts.util.AudioHistoryStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -38,6 +42,8 @@ class MainActivity : AppCompatActivity() {
     private val modelDir by lazy { File(filesDir, "models").apply { mkdirs() } }
     private val tokensDir by lazy { File(filesDir, "tokens").apply { mkdirs() } }
     private val lexiconDir by lazy { File(filesDir, "lexicons").apply { mkdirs() } }
+    private var latestAudioPath: String? = null
+    private var pendingExportPath: String? = null
 
     private val requestPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -93,6 +99,15 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.toast_lexicon_updated), Toast.LENGTH_SHORT).show()
     }
 
+    private val exportAudio = registerForActivityResult(
+        ActivityResultContracts.CreateDocument("audio/wav")
+    ) { uri: Uri? ->
+        val srcPath = pendingExportPath ?: return@registerForActivityResult
+        pendingExportPath = null
+        if (uri == null) return@registerForActivityResult
+        exportToUri(srcPath, uri)
+    }
+
     private fun copyToAppDir(uri: Uri, destDir: File, onDone: (String) -> Unit) {
         lifecycleScope.launch {
             val path = withContext(Dispatchers.IO) {
@@ -136,6 +151,10 @@ class MainActivity : AppCompatActivity() {
         prefs.getString(KEY_MODEL_PATH, null)?.let { viewModel.setModelPath(it) }
         prefs.getString(KEY_TOKENS_PATH, null)?.let { viewModel.setTokensPath(it) }
         prefs.getString(KEY_LEXICON_PATH, null)?.let { viewModel.setLexiconPath(it) }
+        val history = AudioHistoryStore.getItems(this)
+        if (history.isNotEmpty()) {
+            updateLatest(history.first())
+        }
     }
 
     private fun setupUI() {
@@ -145,6 +164,19 @@ class MainActivity : AppCompatActivity() {
         binding.editLexiconButton.setOnClickListener {
             editCustomLexicon.launch(Intent(this, CustomLexiconActivity::class.java))
         }
+        binding.historyButton.setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
+        binding.latestShareButton.setOnClickListener {
+            latestAudioPath?.let { shareAudio(it) }
+        }
+        binding.latestExportButton.setOnClickListener {
+            latestAudioPath?.let {
+                pendingExportPath = it
+                exportAudio.launch(File(it).name)
+            }
+        }
+        setLatestEnabled(false)
 
         binding.generateButton.setOnClickListener {
             val text = binding.textInput.text.toString()
@@ -273,9 +305,27 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.generatedWavPath
             .onEach { wavPath ->
+                val item = AudioHistoryItem(wavPath, System.currentTimeMillis())
+                AudioHistoryStore.addItem(this, item)
+                updateLatest(item)
                 playWav(wavPath)
             }
             .launchIn(lifecycleScope)
+    }
+
+    private fun updateLatest(item: AudioHistoryItem) {
+        latestAudioPath = item.path
+        binding.latestFileName.text = item.path.substringAfterLast('/')
+        val time = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault())
+            .format(java.util.Date(item.createdAt))
+        binding.latestFileTime.text = time
+        setLatestEnabled(true)
+    }
+
+    private fun setLatestEnabled(enabled: Boolean) {
+        binding.latestShareButton.isEnabled = enabled
+        binding.latestExportButton.isEnabled = enabled
+        binding.latestFileTime.text = if (enabled) binding.latestFileTime.text else ""
     }
 
     private fun playWav(wavPath: String) {
@@ -297,5 +347,34 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         mediaPlayer?.release()
         mediaPlayer = null
+    }
+
+    private fun shareAudio(path: String) {
+        val file = File(path)
+        if (!file.exists()) {
+            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
+            return
+        }
+        val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "audio/wav"
+            putExtra(Intent.EXTRA_STREAM, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        startActivity(Intent.createChooser(intent, getString(R.string.share_audio)))
+    }
+
+    private fun exportToUri(srcPath: String, dest: Uri) {
+        val src = File(srcPath)
+        if (!src.exists()) {
+            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
+            return
+        }
+        contentResolver.openOutputStream(dest)?.use { out ->
+            src.inputStream().use { input ->
+                input.copyTo(out)
+            }
+        }
+        Toast.makeText(this, getString(R.string.toast_export_success), Toast.LENGTH_SHORT).show()
     }
 }

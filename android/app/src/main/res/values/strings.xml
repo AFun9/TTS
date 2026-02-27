@@ -13,6 +13,14 @@
     <string name="status_stopped">已停止</string>
     <string name="import_text">导入文本</string>
     <string name="export_audio">导出音频</string>
+    <string name="share_audio">分享</string>
+    <string name="latest_audio">最近生成</string>
+    <string name="no_audio_yet">暂无生成记录</string>
+    <string name="history_title">历史记录</string>
+    <string name="history_empty">暂无历史记录</string>
+    <string name="back">返回</string>
+    <string name="toast_export_success">已导出</string>
+    <string name="toast_audio_missing">音频文件不存在</string>
     <string name="toast_enter_text">请输入文本</string>
     <string name="toast_storage_required">需要存储权限才能使用应用</string>
     <string name="toast_generate_success">语音生成成功</string>
