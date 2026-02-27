@@ -18,6 +18,7 @@
   - `LexiconFirst`：只走 lexicon 优先逻辑
   - `EspeakOnly`：直接走 espeak 音素化
 - 支持在 UI 侧切换 `model.onnx` 与 `tokens.txt`（用于不同语言模型）。
+- 支持在 UI 侧选择 `lexicon.txt`，并提供「自定义发音」编辑页。
 - 内置细粒度错误码映射，便于定位是 token miss、espeak 初始化失败、推理失败还是写 wav 失败。
 
 ## 环境要求
@@ -148,4 +149,4 @@ cd /path/to/sherpa-tts-wrapper/android
 
 ## 许可证
 
-遵循仓库根目录中的许可证说明。# TTS
+遵循仓库根目录中的许可证说明。

@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.content.Intent
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.k2fsa.sherpa.tts.R
 import com.k2fsa.sherpa.tts.databinding.ActivityMainBinding
 import com.k2fsa.sherpa.tts.repository.TTSRepository
+import com.k2fsa.sherpa.tts.ui.lexicon.CustomLexiconActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private val prefs by lazy { getSharedPreferences("tts_prefs", MODE_PRIVATE) }
     private val modelDir by lazy { File(filesDir, "models").apply { mkdirs() } }
     private val tokensDir by lazy { File(filesDir, "tokens").apply { mkdirs() } }
+    private val lexiconDir by lazy { File(filesDir, "lexicons").apply { mkdirs() } }
 
     private val requestPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -69,6 +72,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val pickLexicon = registerForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri: Uri? ->
+        uri ?: return@registerForActivityResult
+        copyToAppDir(uri, lexiconDir) { path ->
+            viewModel.setLexiconPath(path)
+            prefs.edit().putString(KEY_LEXICON_PATH, path).apply()
+            Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val editCustomLexicon = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val data = result.data ?: return@registerForActivityResult
+        val path = data.getStringExtra(CustomLexiconActivity.EXTRA_LEXICON_PATH) ?: return@registerForActivityResult
+        viewModel.setLexiconPath(path)
+        prefs.edit().putString(KEY_LEXICON_PATH, path).apply()
+        Toast.makeText(this, getString(R.string.toast_lexicon_updated), Toast.LENGTH_SHORT).show()
+    }
+
     private fun copyToAppDir(uri: Uri, destDir: File, onDone: (String) -> Unit) {
         lifecycleScope.launch {
             val path = withContext(Dispatchers.IO) {
@@ -93,6 +117,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val KEY_MODEL_PATH = "model_path"
         private const val KEY_TOKENS_PATH = "tokens_path"
+        private const val KEY_LEXICON_PATH = "lexicon_path"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,11 +135,16 @@ class MainActivity : AppCompatActivity() {
     private fun loadSavedPaths() {
         prefs.getString(KEY_MODEL_PATH, null)?.let { viewModel.setModelPath(it) }
         prefs.getString(KEY_TOKENS_PATH, null)?.let { viewModel.setTokensPath(it) }
+        prefs.getString(KEY_LEXICON_PATH, null)?.let { viewModel.setLexiconPath(it) }
     }
 
     private fun setupUI() {
         binding.selectModelButton.setOnClickListener { pickModel.launch(arrayOf("*/*")) }
         binding.selectTokensButton.setOnClickListener { pickTokens.launch(arrayOf("text/*", "*/*")) }
+        binding.selectLexiconButton.setOnClickListener { pickLexicon.launch(arrayOf("text/*", "*/*")) }
+        binding.editLexiconButton.setOnClickListener {
+            editCustomLexicon.launch(Intent(this, CustomLexiconActivity::class.java))
+        }
 
         binding.generateButton.setOnClickListener {
             val text = binding.textInput.text.toString()
@@ -233,6 +263,11 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.tokensPath.collect { path ->
                 binding.tokensPathText.text = if (path.isBlank()) getString(R.string.not_selected) else path.substringAfterLast('/')
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.lexiconPath.collect { path ->
+                binding.lexiconPathText.text = if (path.isBlank()) getString(R.string.not_selected) else path.substringAfterLast('/')
             }
         }
 

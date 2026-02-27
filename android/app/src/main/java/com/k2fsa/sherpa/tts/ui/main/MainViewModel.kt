@@ -44,6 +44,9 @@ class MainViewModel(
     private val _tokensPath = MutableStateFlow("")
     val tokensPath: StateFlow<String> = _tokensPath.asStateFlow()
 
+    private val _lexiconPath = MutableStateFlow("")
+    val lexiconPath: StateFlow<String> = _lexiconPath.asStateFlow()
+
     /** 生成成功后下发 WAV 路径，由 Activity 播放。 */
     private val _generatedWavPath = MutableSharedFlow<String>()
     val generatedWavPath: SharedFlow<String> = _generatedWavPath
@@ -78,6 +81,10 @@ class MainViewModel(
         _tokensPath.value = path
     }
 
+    fun setLexiconPath(path: String) {
+        _lexiconPath.value = path
+    }
+
     fun isModelReady(): Boolean = _modelPath.value.isNotBlank() && _tokensPath.value.isNotBlank()
 
     fun initializeTTS() {
@@ -98,6 +105,7 @@ class MainViewModel(
             val config = TTSConfig(
                 modelPath = _modelPath.value,
                 tokensPath = _tokensPath.value,
+                lexiconPath = _lexiconPath.value,
                 frontendMode = frontendMode,
                 voice = voice,
                 speed = speed

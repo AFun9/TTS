@@ -3,6 +3,7 @@
 #include <cctype>
 #include <fstream>
 #include <sstream>
+#include <unordered_set>
 
 namespace sherpa_tts {
 
@@ -34,23 +35,53 @@ static size_t Utf8CharLen(const std::string& s, size_t pos) {
   return 1;
 }
 
-// 简单按空格和常见标点切分（保留标点作为单独“词”以便可选的静音插入）
+bool IsAsciiPunct(unsigned char c) {
+  return std::ispunct(c) != 0;
+}
+
+bool IsUnicodePunct(const std::string& ch) {
+  static const std::unordered_set<std::string> kPunct = {
+      "，", "。", "！", "？", "；", "：", "、", "…", "—", "–",
+      "（", "）", "《", "》", "【", "】", "「", "」", "『", "』"};
+  return kPunct.count(ch) != 0;
+}
+
+// 按空白和标点切分（保留标点为单独 token），避免 "word," 导致 lexicon miss。
 std::vector<std::string> SplitWords(const std::string& text) {
   std::vector<std::string> words;
   std::string cur;
-  for (size_t i = 0; i <= text.size(); ++i) {
-    char c = (i < text.size()) ? text[i] : ' ';
-    if (std::isspace(static_cast<unsigned char>(c)) || c == '\0') {
-      if (!cur.empty()) {
-        words.push_back(std::move(cur));
-        cur.clear();
-      }
-      if (c != ' ' && c != '\0' && i < text.size()) {
-        words.push_back(std::string(1, c));
+  for (size_t i = 0; i < text.size();) {
+    size_t clen = Utf8CharLen(text, i);
+    if (clen == 0) break;
+    std::string ch = text.substr(i, clen);
+    if (clen == 1) {
+      unsigned char c = static_cast<unsigned char>(text[i]);
+      if (std::isspace(c)) {
+        if (!cur.empty()) {
+          words.push_back(std::move(cur));
+          cur.clear();
+        }
+      } else if (IsAsciiPunct(c)) {
+        if (!cur.empty()) {
+          words.push_back(std::move(cur));
+          cur.clear();
+        }
+        words.push_back(std::move(ch));
+      } else {
+        cur += ch;
       }
     } else {
-      cur += c;
+      if (IsUnicodePunct(ch)) {
+        if (!cur.empty()) {
+          words.push_back(std::move(cur));
+          cur.clear();
+        }
+        words.push_back(std::move(ch));
+      } else {
+        cur += ch;
+      }
     }
+    i += clen;
   }
   if (!cur.empty()) words.push_back(std::move(cur));
   return words;
