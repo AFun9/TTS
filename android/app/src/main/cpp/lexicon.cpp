@@ -40,9 +40,17 @@ bool IsAsciiPunct(unsigned char c) {
 }
 
 bool IsUnicodePunct(const std::string& ch) {
+  // 中文 + 西里尔/拉丁/法语/俄语等常用标点，便于多语言输入正确切词
   static const std::unordered_set<std::string> kPunct = {
       "，", "。", "！", "？", "；", "：", "、", "…", "—", "–",
-      "（", "）", "《", "》", "【", "】", "「", "」", "『", "』"};
+      "（", "）", "《", "》", "【", "】", "「", "」", "『", "』",
+      "\xC2\xAB", "\xC2\xBB",   // « »
+      "\xE2\x80\xB9", "\xE2\x80\xBA",  // ‹ ›
+      "\xE2\x80\x9A", "\xE2\x80\x9E", "\xE2\x80\x9C", "\xE2\x80\x9D",  // ‚ „ " "
+      "\xE2\x80\x98", "\xE2\x80\x99",  // ' '
+      "\xC2\xB4", "\xE2\x80\x90", "\xE2\x80\x91",  // ´ ‐ ‑
+      "\xC2\xA1", "\xC2\xBF", "\xC2\xB7",  // ¡ ¿ ·
+  };
   return kPunct.count(ch) != 0;
 }
 
