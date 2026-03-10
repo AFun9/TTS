@@ -21,6 +21,7 @@ import com.k2fsa.sherpa.tts.ui.history.HistoryActivity
 import com.k2fsa.sherpa.tts.ui.lexicon.CustomLexiconActivity
 import com.k2fsa.sherpa.tts.util.AudioHistoryItem
 import com.k2fsa.sherpa.tts.util.AudioHistoryStore
+import com.k2fsa.sherpa.tts.util.TtsPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         TTSRepository(this, File(filesDir, "tts_output").apply { mkdirs() })
     }
 
-    private val prefs by lazy { getSharedPreferences("tts_prefs", MODE_PRIVATE) }
+    private val ttsPrefs by lazy { TtsPreferences(this) }
     private val modelDir by lazy { File(filesDir, "models").apply { mkdirs() } }
     private val tokensDir by lazy { File(filesDir, "tokens").apply { mkdirs() } }
     private val lexiconDir by lazy { File(filesDir, "lexicons").apply { mkdirs() } }
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         uri ?: return@registerForActivityResult
         copyToAppDir(uri, modelDir) { path ->
             viewModel.setModelPath(path)
-            prefs.edit().putString(KEY_MODEL_PATH, path).apply()
+            ttsPrefs.modelPath = path
             Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
         }
     }
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         uri ?: return@registerForActivityResult
         copyToAppDir(uri, tokensDir) { path ->
             viewModel.setTokensPath(path)
-            prefs.edit().putString(KEY_TOKENS_PATH, path).apply()
+            ttsPrefs.tokensPath = path
             Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
         }
     }
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         uri ?: return@registerForActivityResult
         copyToAppDir(uri, lexiconDir) { path ->
             viewModel.setLexiconPath(path)
-            prefs.edit().putString(KEY_LEXICON_PATH, path).apply()
+            ttsPrefs.lexiconPath = path
             Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
         }
     }
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         val data = result.data ?: return@registerForActivityResult
         val path = data.getStringExtra(CustomLexiconActivity.EXTRA_LEXICON_PATH) ?: return@registerForActivityResult
         viewModel.setLexiconPath(path)
-        prefs.edit().putString(KEY_LEXICON_PATH, path).apply()
+        ttsPrefs.lexiconPath = path
         Toast.makeText(this, getString(R.string.toast_lexicon_updated), Toast.LENGTH_SHORT).show()
     }
 
@@ -132,14 +133,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        private const val KEY_MODEL_PATH = "model_path"
-        private const val KEY_TOKENS_PATH = "tokens_path"
-        private const val KEY_LEXICON_PATH = "lexicon_path"
-        private const val KEY_AUTO_PLAY = "auto_play"
-        private const val KEY_PLAYBACK_SPEED = "playback_speed"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -153,11 +146,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadSavedPaths() {
-        prefs.getString(KEY_MODEL_PATH, null)?.let { viewModel.setModelPath(it) }
-        prefs.getString(KEY_TOKENS_PATH, null)?.let { viewModel.setTokensPath(it) }
-        prefs.getString(KEY_LEXICON_PATH, null)?.let { viewModel.setLexiconPath(it) }
-        autoPlayEnabled = prefs.getBoolean(KEY_AUTO_PLAY, true)
-        playbackSpeed = prefs.getFloat(KEY_PLAYBACK_SPEED, 1.0f)
+        ttsPrefs.modelPath.takeIf { it.isNotBlank() }?.let { viewModel.setModelPath(it) }
+        ttsPrefs.tokensPath.takeIf { it.isNotBlank() }?.let { viewModel.setTokensPath(it) }
+        ttsPrefs.lexiconPath.takeIf { it.isNotBlank() }?.let { viewModel.setLexiconPath(it) }
+        autoPlayEnabled = ttsPrefs.autoPlay
+        playbackSpeed = ttsPrefs.playbackSpeed
         val history = AudioHistoryStore.getItems(this)
         val latest = history.firstOrNull { File(it.path).exists() }
         if (latest != null) {
@@ -198,13 +191,13 @@ class MainActivity : AppCompatActivity() {
         binding.autoPlaySwitch.isChecked = autoPlayEnabled
         binding.autoPlaySwitch.setOnCheckedChangeListener { _, isChecked ->
             autoPlayEnabled = isChecked
-            prefs.edit().putBoolean(KEY_AUTO_PLAY, isChecked).apply()
+            ttsPrefs.autoPlay = isChecked
         }
         binding.playbackSpeedSlider.value = playbackSpeed
         binding.playbackSpeedText.text = String.format("%.1fx", playbackSpeed)
         binding.playbackSpeedSlider.addOnChangeListener { _, value, _ ->
             playbackSpeed = value
-            prefs.edit().putFloat(KEY_PLAYBACK_SPEED, value).apply()
+            ttsPrefs.playbackSpeed = value
             binding.playbackSpeedText.text = String.format("%.1fx", value)
             applyPlaybackSpeed()
         }
