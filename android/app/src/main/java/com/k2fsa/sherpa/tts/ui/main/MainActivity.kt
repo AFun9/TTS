@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         if (allGranted) {
             initializeTTS()
         } else {
-            Toast.makeText(this, "需要存储权限才能使用应用", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_storage_required), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -282,32 +282,32 @@ class MainActivity : AppCompatActivity() {
                         binding.progressBar.visibility = android.view.View.VISIBLE
                         binding.progressBar.progress = 0
                         binding.generateButton.isEnabled = false
-                        binding.statusText.text = "正在生成语音..."
+                        binding.statusText.text = getString(R.string.status_loading)
                         binding.diagnosticsButton.visibility = android.view.View.GONE
                     }
                     is MainUiState.Success -> {
                         binding.progressBar.visibility = android.view.View.GONE
                         binding.generateButton.isEnabled = true
-                        binding.statusText.text = "生成成功"
-                        Toast.makeText(this@MainActivity, "语音生成成功", Toast.LENGTH_SHORT).show()
+                        binding.statusText.text = getString(R.string.status_success)
+                        Toast.makeText(this@MainActivity, getString(R.string.toast_generate_success), Toast.LENGTH_SHORT).show()
                         binding.diagnosticsButton.visibility = android.view.View.GONE
                     }
                     is MainUiState.Error -> {
                         binding.progressBar.visibility = android.view.View.GONE
                         binding.generateButton.isEnabled = true
-                        binding.statusText.text = "生成失败: ${state.message}"
+                        binding.statusText.text = getString(R.string.status_error_fmt, state.message)
                         val toastMsg = if (state.message.contains("JNI") || state.message.contains("nativeCreate"))
                             getString(R.string.error_engine_not_ready)
                         else
-                            "生成失败: ${state.message}"
+                            getString(R.string.status_error_fmt, state.message)
                         Toast.makeText(this@MainActivity, toastMsg, Toast.LENGTH_LONG).show()
                         binding.diagnosticsButton.visibility = android.view.View.VISIBLE
                     }
                     is MainUiState.Playing -> {
-                        binding.statusText.text = "正在播放"
+                        binding.statusText.text = getString(R.string.status_playing)
                     }
                     is MainUiState.Stopped -> {
-                        binding.statusText.text = "已停止"
+                        binding.statusText.text = getString(R.string.status_stopped)
                     }
                 }
             }
@@ -434,9 +434,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDiagnostics() {
         val message = if (lastErrorText.isBlank()) {
-            "暂无诊断信息。"
+            getString(R.string.diagnostics_empty)
         } else {
-            "$lastErrorText\n\n建议：\n1. 检查 tokens.txt 与模型语言是否匹配。\n2. 确认 lexicon.txt 格式正确且词典命中。\n3. 查看 logcat -s SherpaTts 获取更详细的 native 日志。"
+            "$lastErrorText\n\n${getString(R.string.diagnostics_suggestions)}"
         }
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle(getString(R.string.diagnostics))
