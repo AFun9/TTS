@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
     private val lexiconDir by lazy { File(filesDir, "lexicons").apply { mkdirs() } }
     private var latestAudioPath: String? = null
     private var pendingExportPath: String? = null
+    private var autoPlayEnabled: Boolean = true
+    private var playbackSpeed: Float = 1.0f
+    private var lastErrorText: String = ""
 
     private val requestPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -133,6 +136,8 @@ class MainActivity : AppCompatActivity() {
         private const val KEY_MODEL_PATH = "model_path"
         private const val KEY_TOKENS_PATH = "tokens_path"
         private const val KEY_LEXICON_PATH = "lexicon_path"
+        private const val KEY_AUTO_PLAY = "auto_play"
+        private const val KEY_PLAYBACK_SPEED = "playback_speed"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -151,9 +156,14 @@ class MainActivity : AppCompatActivity() {
         prefs.getString(KEY_MODEL_PATH, null)?.let { viewModel.setModelPath(it) }
         prefs.getString(KEY_TOKENS_PATH, null)?.let { viewModel.setTokensPath(it) }
         prefs.getString(KEY_LEXICON_PATH, null)?.let { viewModel.setLexiconPath(it) }
+        autoPlayEnabled = prefs.getBoolean(KEY_AUTO_PLAY, true)
+        playbackSpeed = prefs.getFloat(KEY_PLAYBACK_SPEED, 1.0f)
         val history = AudioHistoryStore.getItems(this)
-        if (history.isNotEmpty()) {
-            updateLatest(history.first())
+        val latest = history.firstOrNull { File(it.path).exists() }
+        if (latest != null) {
+            updateLatest(latest)
+        } else if (history.isNotEmpty()) {
+            history.forEach { AudioHistoryStore.removeItem(this, it.path) }
         }
     }
 
@@ -176,6 +186,29 @@ class MainActivity : AppCompatActivity() {
                 exportAudio.launch(File(it).name)
             }
         }
+        binding.latestFavoriteButton.setOnClickListener {
+            latestAudioPath?.let {
+                AudioHistoryStore.toggleFavorite(this, it)
+                updateLatestFromStore(it)
+            }
+        }
+        binding.latestRenameButton.setOnClickListener {
+            latestAudioPath?.let { renameLatest(it) }
+        }
+        binding.autoPlaySwitch.isChecked = autoPlayEnabled
+        binding.autoPlaySwitch.setOnCheckedChangeListener { _, isChecked ->
+            autoPlayEnabled = isChecked
+            prefs.edit().putBoolean(KEY_AUTO_PLAY, isChecked).apply()
+        }
+        binding.playbackSpeedSlider.value = playbackSpeed
+        binding.playbackSpeedText.text = String.format("%.1fx", playbackSpeed)
+        binding.playbackSpeedSlider.addOnChangeListener { _, value, _ ->
+            playbackSpeed = value
+            prefs.edit().putFloat(KEY_PLAYBACK_SPEED, value).apply()
+            binding.playbackSpeedText.text = String.format("%.1fx", value)
+            applyPlaybackSpeed()
+        }
+        binding.diagnosticsButton.setOnClickListener { showDiagnostics() }
         setLatestEnabled(false)
 
         binding.generateButton.setOnClickListener {
@@ -248,18 +281,21 @@ class MainActivity : AppCompatActivity() {
                         binding.progressBar.visibility = android.view.View.GONE
                         binding.generateButton.isEnabled = true
                         binding.statusText.text = getString(R.string.status_idle_hint)
+                        binding.diagnosticsButton.visibility = android.view.View.GONE
                     }
                     is MainUiState.Loading -> {
                         binding.progressBar.visibility = android.view.View.VISIBLE
                         binding.progressBar.progress = 0
                         binding.generateButton.isEnabled = false
                         binding.statusText.text = "正在生成语音..."
+                        binding.diagnosticsButton.visibility = android.view.View.GONE
                     }
                     is MainUiState.Success -> {
                         binding.progressBar.visibility = android.view.View.GONE
                         binding.generateButton.isEnabled = true
                         binding.statusText.text = "生成成功"
                         Toast.makeText(this@MainActivity, "语音生成成功", Toast.LENGTH_SHORT).show()
+                        binding.diagnosticsButton.visibility = android.view.View.GONE
                     }
                     is MainUiState.Error -> {
                         binding.progressBar.visibility = android.view.View.GONE
@@ -270,6 +306,7 @@ class MainActivity : AppCompatActivity() {
                         else
                             "生成失败: ${state.message}"
                         Toast.makeText(this@MainActivity, toastMsg, Toast.LENGTH_LONG).show()
+                        binding.diagnosticsButton.visibility = android.view.View.VISIBLE
                     }
                     is MainUiState.Playing -> {
                         binding.statusText.text = "正在播放"
@@ -284,6 +321,12 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.progress.collect { progress ->
                 binding.progressBar.progress = progress
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.lastError.collect { msg ->
+                lastErrorText = msg
             }
         }
 
@@ -308,7 +351,9 @@ class MainActivity : AppCompatActivity() {
                 val item = AudioHistoryItem(wavPath, System.currentTimeMillis())
                 AudioHistoryStore.addItem(this, item)
                 updateLatest(item)
-                playWav(wavPath)
+                if (autoPlayEnabled) {
+                    playWav(wavPath)
+                }
             }
             .launchIn(lifecycleScope)
     }
@@ -319,13 +364,22 @@ class MainActivity : AppCompatActivity() {
         val time = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault())
             .format(java.util.Date(item.createdAt))
         binding.latestFileTime.text = time
+        binding.latestFileInfo.text = buildLatestInfo(item.path)
+        binding.latestFavoriteButton.text = if (item.favorite) {
+            getString(R.string.favorited)
+        } else {
+            getString(R.string.favorite)
+        }
         setLatestEnabled(true)
     }
 
     private fun setLatestEnabled(enabled: Boolean) {
         binding.latestShareButton.isEnabled = enabled
         binding.latestExportButton.isEnabled = enabled
+        binding.latestFavoriteButton.isEnabled = enabled
+        binding.latestRenameButton.isEnabled = enabled
         binding.latestFileTime.text = if (enabled) binding.latestFileTime.text else ""
+        binding.latestFileInfo.text = if (enabled) binding.latestFileInfo.text else ""
     }
 
     private fun playWav(wavPath: String) {
@@ -335,6 +389,7 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer = MediaPlayer().apply {
             setDataSource(file.absolutePath)
             prepare()
+            applyPlaybackSpeed()
             setOnCompletionListener {
                 viewModel.stopPlayback()
             }
@@ -349,32 +404,161 @@ class MainActivity : AppCompatActivity() {
         mediaPlayer = null
     }
 
+    private fun applyPlaybackSpeed() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            try {
+                val params = mediaPlayer?.playbackParams?.setSpeed(playbackSpeed)
+                if (params != null) mediaPlayer?.playbackParams = params
+            } catch (_: Throwable) {
+                // 일부 기기에서 playbackParams 가 실패할 수 있어 무시
+            }
+        }
+    }
+
+    private fun buildLatestInfo(path: String): String {
+        val duration = getDurationMs(path)
+        val size = getSizeBytes(path)
+        val durationText = if (duration > 0) formatDuration(duration) else ""
+        val sizeText = if (size > 0) formatSize(size) else ""
+        return listOf(durationText, sizeText).filter { it.isNotBlank() }.joinToString(" · ")
+    }
+
+    private fun getDurationMs(path: String): Long {
+        val retriever = android.media.MediaMetadataRetriever()
+        return try {
+            retriever.setDataSource(path)
+            retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLong() ?: 0L
+        } catch (_: Throwable) {
+            0L
+        } finally {
+            retriever.release()
+        }
+    }
+
+    private fun getSizeBytes(path: String): Long {
+        val file = File(path)
+        return if (file.exists()) file.length() else 0L
+    }
+
+    private fun formatDuration(ms: Long): String {
+        val totalSec = (ms / 1000).toInt()
+        val m = totalSec / 60
+        val s = totalSec % 60
+        return String.format("%02d:%02d", m, s)
+    }
+
+    private fun formatSize(bytes: Long): String {
+        if (bytes <= 0) return ""
+        val kb = bytes / 1024.0
+        if (kb < 1024) return String.format(java.util.Locale.getDefault(), "%.1f KB", kb)
+        val mb = kb / 1024.0
+        return String.format(java.util.Locale.getDefault(), "%.1f MB", mb)
+    }
+
+    private fun updateLatestFromStore(path: String) {
+        val item = AudioHistoryStore.getItems(this).firstOrNull { it.path == path }
+        if (item != null) updateLatest(item)
+    }
+
+    private fun renameLatest(path: String) {
+        val file = File(path)
+        if (!file.exists()) {
+            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
+            AudioHistoryStore.removeItem(this, path)
+            latestAudioPath = null
+            setLatestEnabled(false)
+            return
+        }
+        val input = android.widget.EditText(this).apply {
+            setText(file.nameWithoutExtension)
+        }
+        val origin = AudioHistoryStore.getItems(this).firstOrNull { it.path == path }
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.rename))
+            .setView(input)
+            .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                val newName = input.text.toString().trim()
+                if (newName.isBlank()) return@setPositiveButton
+                val target = File(file.parentFile, "$newName.wav")
+                if (target.exists()) {
+                    Toast.makeText(this, getString(R.string.toast_name_exists), Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+                if (file.renameTo(target)) {
+                    val item = AudioHistoryItem(
+                        target.absolutePath,
+                        origin?.createdAt ?: System.currentTimeMillis(),
+                        origin?.favorite ?: false
+                    )
+                    AudioHistoryStore.removeItem(this, path)
+                    AudioHistoryStore.addItem(this, item)
+                    updateLatest(item)
+                } else {
+                    Toast.makeText(this, getString(R.string.toast_rename_failed), Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
+    }
+
+    private fun showDiagnostics() {
+        val message = if (lastErrorText.isBlank()) {
+            "暂无诊断信息。"
+        } else {
+            "$lastErrorText\n\n建议：\n1. 检查 tokens.txt 与模型语言是否匹配。\n2. 确认 lexicon.txt 格式正确且词典命中。\n3. 查看 logcat -s SherpaTts 获取更详细的 native 日志。"
+        }
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.diagnostics))
+            .setMessage(message)
+            .setPositiveButton(getString(R.string.ok), null)
+            .show()
+    }
+
     private fun shareAudio(path: String) {
         val file = File(path)
         if (!file.exists()) {
             Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
+            AudioHistoryStore.removeItem(this, path)
+            latestAudioPath = null
+            setLatestEnabled(false)
             return
         }
-        val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "audio/wav"
-            putExtra(Intent.EXTRA_STREAM, uri)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        try {
+            val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "audio/wav"
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            startActivity(Intent.createChooser(intent, getString(R.string.share_audio)))
+        } catch (_: Throwable) {
+            Toast.makeText(this, getString(R.string.toast_share_failed), Toast.LENGTH_SHORT).show()
         }
-        startActivity(Intent.createChooser(intent, getString(R.string.share_audio)))
     }
 
     private fun exportToUri(srcPath: String, dest: Uri) {
         val src = File(srcPath)
         if (!src.exists()) {
             Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
+            AudioHistoryStore.removeItem(this, srcPath)
+            latestAudioPath = null
+            setLatestEnabled(false)
             return
         }
-        contentResolver.openOutputStream(dest)?.use { out ->
-            src.inputStream().use { input ->
-                input.copyTo(out)
+        try {
+            val out = contentResolver.openOutputStream(dest)
+            if (out == null) {
+                Toast.makeText(this, getString(R.string.toast_export_failed), Toast.LENGTH_SHORT).show()
+                return
             }
+            out.use { output ->
+                src.inputStream().use { input ->
+                    input.copyTo(output)
+                }
+            }
+            Toast.makeText(this, getString(R.string.toast_export_success), Toast.LENGTH_SHORT).show()
+        } catch (_: Throwable) {
+            Toast.makeText(this, getString(R.string.toast_export_failed), Toast.LENGTH_SHORT).show()
         }
-        Toast.makeText(this, getString(R.string.toast_export_success), Toast.LENGTH_SHORT).show()
     }
 }
