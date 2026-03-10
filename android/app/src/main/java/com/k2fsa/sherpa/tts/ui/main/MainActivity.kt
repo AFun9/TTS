@@ -2,7 +2,6 @@ package com.k2fsa.sherpa.tts.ui.main
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.content.Intent
@@ -10,7 +9,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
 import com.k2fsa.sherpa.tts.R
@@ -31,13 +29,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
-    private var mediaPlayer: MediaPlayer? = null
     private val ttsRepository by lazy {
         TTSRepository(this, File(filesDir, "tts_output").apply { mkdirs() })
     }
 
     private val ttsPrefs by lazy { TtsPreferences(this) }
     private val documentCopyHelper by lazy { DocumentCopyHelper(this) }
+    private val latestAudioHandler by lazy { LatestAudioHandler(this) }
     private val modelDir by lazy { File(filesDir, "models").apply { mkdirs() } }
     private val tokensDir by lazy { File(filesDir, "tokens").apply { mkdirs() } }
     private val lexiconDir by lazy { File(filesDir, "lexicons").apply { mkdirs() } }
@@ -113,7 +111,11 @@ class MainActivity : AppCompatActivity() {
         val srcPath = pendingExportPath ?: return@registerForActivityResult
         pendingExportPath = null
         if (uri == null) return@registerForActivityResult
-        exportToUri(srcPath, uri)
+        latestAudioHandler.export(srcPath, uri) {
+            AudioHistoryStore.removeItem(this, srcPath)
+            latestAudioPath = null
+            setLatestEnabled(false)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -154,7 +156,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
         binding.latestShareButton.setOnClickListener {
-            latestAudioPath?.let { shareAudio(it) }
+            latestAudioPath?.let { path ->
+                latestAudioHandler.share(path) {
+                    AudioHistoryStore.removeItem(this, path)
+                    latestAudioPath = null
+                    setLatestEnabled(false)
+                }
+            }
         }
         binding.latestExportButton.setOnClickListener {
             latestAudioPath?.let {
@@ -169,7 +177,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.latestRenameButton.setOnClickListener {
-            latestAudioPath?.let { renameLatest(it) }
+            latestAudioPath?.let { path ->
+                latestAudioHandler.rename(path,
+                    onMissing = {
+                        AudioHistoryStore.removeItem(this, path)
+                        latestAudioPath = null
+                        setLatestEnabled(false)
+                    },
+                    onRenamed = { newPath, createdAt, favorite ->
+                        AudioHistoryStore.removeItem(this, path)
+                        AudioHistoryStore.addItem(this, AudioHistoryItem(newPath, createdAt, favorite))
+                        updateLatest(AudioHistoryItem(newPath, createdAt, favorite))
+                    }
+                )
+            }
         }
         binding.autoPlaySwitch.isChecked = autoPlayEnabled
         binding.autoPlaySwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -182,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             playbackSpeed = value
             ttsPrefs.playbackSpeed = value
             binding.playbackSpeedText.text = String.format("%.1fx", value)
-            applyPlaybackSpeed()
+            latestAudioHandler.updatePlaybackSpeed(value)
         }
         binding.diagnosticsButton.setOnClickListener { showDiagnostics() }
         setLatestEnabled(false)
@@ -201,9 +222,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.stopButton.setOnClickListener {
-            mediaPlayer?.stop()
-            mediaPlayer?.release()
-            mediaPlayer = null
+            latestAudioHandler.stop()
             viewModel.stopPlayback()
         }
 
@@ -359,36 +378,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playWav(wavPath: String) {
-        val file = File(wavPath)
-        if (!file.exists()) return
-        mediaPlayer?.release()
-        mediaPlayer = MediaPlayer().apply {
-            setDataSource(file.absolutePath)
-            prepare()
-            applyPlaybackSpeed()
-            setOnCompletionListener {
-                viewModel.stopPlayback()
-            }
-            start()
-        }
+        latestAudioHandler.play(wavPath, playbackSpeed) { viewModel.stopPlayback() }
         viewModel.setPlaying()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer?.release()
-        mediaPlayer = null
-    }
-
-    private fun applyPlaybackSpeed() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            try {
-                val params = mediaPlayer?.playbackParams?.setSpeed(playbackSpeed)
-                if (params != null) mediaPlayer?.playbackParams = params
-            } catch (_: Throwable) {
-                // 일부 기기에서 playbackParams 가 실패할 수 있어 무시
-            }
-        }
+        latestAudioHandler.release()
     }
 
     private fun buildLatestInfo(path: String): String {
@@ -436,47 +432,6 @@ class MainActivity : AppCompatActivity() {
         if (item != null) updateLatest(item)
     }
 
-    private fun renameLatest(path: String) {
-        val file = File(path)
-        if (!file.exists()) {
-            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
-            AudioHistoryStore.removeItem(this, path)
-            latestAudioPath = null
-            setLatestEnabled(false)
-            return
-        }
-        val input = android.widget.EditText(this).apply {
-            setText(file.nameWithoutExtension)
-        }
-        val origin = AudioHistoryStore.getItems(this).firstOrNull { it.path == path }
-        androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle(getString(R.string.rename))
-            .setView(input)
-            .setPositiveButton(getString(R.string.ok)) { _, _ ->
-                val newName = input.text.toString().trim()
-                if (newName.isBlank()) return@setPositiveButton
-                val target = File(file.parentFile, "$newName.wav")
-                if (target.exists()) {
-                    Toast.makeText(this, getString(R.string.toast_name_exists), Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-                if (file.renameTo(target)) {
-                    val item = AudioHistoryItem(
-                        target.absolutePath,
-                        origin?.createdAt ?: System.currentTimeMillis(),
-                        origin?.favorite ?: false
-                    )
-                    AudioHistoryStore.removeItem(this, path)
-                    AudioHistoryStore.addItem(this, item)
-                    updateLatest(item)
-                } else {
-                    Toast.makeText(this, getString(R.string.toast_rename_failed), Toast.LENGTH_SHORT).show()
-                }
-            }
-            .setNegativeButton(getString(R.string.cancel), null)
-            .show()
-    }
-
     private fun showDiagnostics() {
         val message = if (lastErrorText.isBlank()) {
             "暂无诊断信息。"
@@ -490,51 +445,4 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun shareAudio(path: String) {
-        val file = File(path)
-        if (!file.exists()) {
-            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
-            AudioHistoryStore.removeItem(this, path)
-            latestAudioPath = null
-            setLatestEnabled(false)
-            return
-        }
-        try {
-            val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
-            val intent = Intent(Intent.ACTION_SEND).apply {
-                type = "audio/wav"
-                putExtra(Intent.EXTRA_STREAM, uri)
-                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            }
-            startActivity(Intent.createChooser(intent, getString(R.string.share_audio)))
-        } catch (_: Throwable) {
-            Toast.makeText(this, getString(R.string.toast_share_failed), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun exportToUri(srcPath: String, dest: Uri) {
-        val src = File(srcPath)
-        if (!src.exists()) {
-            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
-            AudioHistoryStore.removeItem(this, srcPath)
-            latestAudioPath = null
-            setLatestEnabled(false)
-            return
-        }
-        try {
-            val out = contentResolver.openOutputStream(dest)
-            if (out == null) {
-                Toast.makeText(this, getString(R.string.toast_export_failed), Toast.LENGTH_SHORT).show()
-                return
-            }
-            out.use { output ->
-                src.inputStream().use { input ->
-                    input.copyTo(output)
-                }
-            }
-            Toast.makeText(this, getString(R.string.toast_export_success), Toast.LENGTH_SHORT).show()
-        } catch (_: Throwable) {
-            Toast.makeText(this, getString(R.string.toast_export_failed), Toast.LENGTH_SHORT).show()
-        }
-    }
 }

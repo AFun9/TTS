@@ -45,6 +45,11 @@ class LatestAudioHandler(private val activity: AppCompatActivity) {
         }
     }
 
+    /** 更新当前播放的语速（如用户调节滑块时）。 */
+    fun updatePlaybackSpeed(speed: Float) {
+        applyPlaybackSpeed(speed)
+    }
+
     fun stop() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
