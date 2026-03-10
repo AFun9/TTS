@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.provider.OpenableColumns
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,14 +20,12 @@ import com.k2fsa.sherpa.tts.ui.history.HistoryActivity
 import com.k2fsa.sherpa.tts.ui.lexicon.CustomLexiconActivity
 import com.k2fsa.sherpa.tts.util.AudioHistoryItem
 import com.k2fsa.sherpa.tts.util.AudioHistoryStore
+import com.k2fsa.sherpa.tts.util.DocumentCopyHelper
 import com.k2fsa.sherpa.tts.util.TtsPreferences
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.File
-import java.io.FileOutputStream
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val ttsPrefs by lazy { TtsPreferences(this) }
+    private val documentCopyHelper by lazy { DocumentCopyHelper(this) }
     private val modelDir by lazy { File(filesDir, "models").apply { mkdirs() } }
     private val tokensDir by lazy { File(filesDir, "tokens").apply { mkdirs() } }
     private val lexiconDir by lazy { File(filesDir, "lexicons").apply { mkdirs() } }
@@ -64,10 +62,12 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
         uri ?: return@registerForActivityResult
-        copyToAppDir(uri, modelDir) { path ->
-            viewModel.setModelPath(path)
-            ttsPrefs.modelPath = path
-            Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            documentCopyHelper.copyToAppDir(uri, modelDir)?.let { path ->
+                viewModel.setModelPath(path)
+                ttsPrefs.modelPath = path
+                Toast.makeText(this@MainActivity, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -75,10 +75,12 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
         uri ?: return@registerForActivityResult
-        copyToAppDir(uri, tokensDir) { path ->
-            viewModel.setTokensPath(path)
-            ttsPrefs.tokensPath = path
-            Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            documentCopyHelper.copyToAppDir(uri, tokensDir)?.let { path ->
+                viewModel.setTokensPath(path)
+                ttsPrefs.tokensPath = path
+                Toast.makeText(this@MainActivity, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -86,10 +88,12 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
         uri ?: return@registerForActivityResult
-        copyToAppDir(uri, lexiconDir) { path ->
-            viewModel.setLexiconPath(path)
-            ttsPrefs.lexiconPath = path
-            Toast.makeText(this, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            documentCopyHelper.copyToAppDir(uri, lexiconDir)?.let { path ->
+                viewModel.setLexiconPath(path)
+                ttsPrefs.lexiconPath = path
+                Toast.makeText(this@MainActivity, getString(R.string.toast_file_copied), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -110,27 +114,6 @@ class MainActivity : AppCompatActivity() {
         pendingExportPath = null
         if (uri == null) return@registerForActivityResult
         exportToUri(srcPath, uri)
-    }
-
-    private fun copyToAppDir(uri: Uri, destDir: File, onDone: (String) -> Unit) {
-        lifecycleScope.launch {
-            val path = withContext(Dispatchers.IO) {
-                val name = contentResolver.query(uri, null, null, null, null)?.use { cursor ->
-                    if (cursor.moveToFirst()) {
-                        val idx = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                        if (idx >= 0) cursor.getString(idx) else null
-                    } else null
-                } ?: uri.lastPathSegment?.substringAfterLast('/') ?: "file"
-                val dest = File(destDir, name)
-                contentResolver.openInputStream(uri)?.use { input ->
-                    FileOutputStream(dest).use { output ->
-                        input.copyTo(output)
-                    }
-                    dest.absolutePath
-                }
-            }
-            path?.let { onDone(it) }
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
