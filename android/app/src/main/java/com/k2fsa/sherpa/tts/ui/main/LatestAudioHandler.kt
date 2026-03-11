@@ -12,7 +12,10 @@ import com.k2fsa.sherpa.tts.util.AudioHistoryStore
 import java.io.File
 
 /**
- * 封装「最新一条音频」的播放、分享、导出、重命名；持有 MediaPlayer，需在 Activity onDestroy 时调用 [release]。
+ * 处理主界面“最新生成音频”的交互动作。
+ *
+ * 这里集中维护 MediaPlayer 与文件级操作，避免 MainActivity 同时承担
+ * 播放控制、分享导出和重命名对话框等多种职责。
  */
 class LatestAudioHandler(private val activity: AppCompatActivity) {
 

@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.SharedPreferences
 
 /**
- * 封装 TTS 相关偏好：模型/tokens/lexicon 路径、自动播放、播放速度。
+ * 统一管理主界面会持久化的轻量设置。
+ *
+ * 当前仅保存模型路径、词典路径，以及最近播放相关开关；
+ * 不承担运行时状态缓存和复杂配置迁移。
  */
 class TtsPreferences(context: Context) {
 

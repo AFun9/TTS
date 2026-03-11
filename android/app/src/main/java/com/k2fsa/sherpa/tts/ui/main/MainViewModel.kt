@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * 主界面 UI 状态。
+ * 主界面只消费这一组高层状态，不直接感知底层 JNI/Repository 细节。
  */
 sealed class MainUiState {
     data object Idle : MainUiState()
@@ -26,7 +26,10 @@ sealed class MainUiState {
 }
 
 /**
- * 主界面 ViewModel：使用本项目的 TTSRepository（JNI 引擎）生成并下发播放路径。
+ * 主界面状态协调者。
+ *
+ * 它维护模型路径、生成进度和错误信息，并把成功生成的 WAV 路径下发给
+ * Activity；播放、文件管理等副作用则交给 UI 层的 handler。
  */
 class MainViewModel(
     private val ttsRepository: TTSRepository
@@ -37,6 +40,9 @@ class MainViewModel(
 
     private val _progress = MutableStateFlow(0)
     val progress: StateFlow<Int> = _progress.asStateFlow()
+
+    private val _lastError = MutableStateFlow("")
+    val lastError: StateFlow<String> = _lastError.asStateFlow()
 
     private val _modelPath = MutableStateFlow("")
     val modelPath: StateFlow<String> = _modelPath.asStateFlow()
@@ -56,6 +62,7 @@ class MainViewModel(
     private var frontendMode: FrontendMode = FrontendMode.Auto
     private var voice: String = "ru"
     private var generateJob: Job? = null
+    private var progressJob: Job? = null
 
     fun setSpeed(value: Float) {
         speed = value.coerceIn(0.5f, 2.0f)
@@ -99,9 +106,12 @@ class MainViewModel(
     fun generateSpeech(text: String) {
         if (text.isBlank()) return
         generateJob?.cancel()
+        progressJob?.cancel()
         generateJob = viewModelScope.launch {
             _uiState.value = MainUiState.Loading
             _progress.value = 0
+            _lastError.value = ""
+            startProgressTicker(text)
             val config = TTSConfig(
                 modelPath = _modelPath.value,
                 tokensPath = _tokensPath.value,
@@ -112,11 +122,13 @@ class MainViewModel(
             )
             ttsRepository.generateSpeech(config, text, speed)
                 .onSuccess { audio ->
+                    progressJob?.cancel()
                     _progress.value = 100
                     _uiState.value = MainUiState.Success()
                     _generatedWavPath.emit(audio.wavFilePath)
                 }
                 .onFailure { e ->
+                    progressJob?.cancel()
                     val msg = when {
                         e.message?.contains("nativeCreate failed") == true ->
                             "引擎创建失败：未链接 ONNX Runtime 或模型/tokens 路径有误。请用 logcat -s SherpaTts 查看原因。"
@@ -142,8 +154,28 @@ class MainViewModel(
                             "未找到 native 库或未链接 ONNX Runtime，请按文档设置 ONNXRUNTIME_ROOT 后重新编译。"
                         else -> e.message
                     }
+                    _lastError.value = msg ?: "生成失败"
                     _uiState.value = MainUiState.Error(msg ?: "生成失败")
                 }
+        }
+    }
+
+    private fun startProgressTicker(text: String) {
+        val expectedMs = (text.length * 40L).coerceIn(600L, 6000L)
+        val maxMs = 12000L
+        progressJob = viewModelScope.launch {
+            val start = System.currentTimeMillis()
+            while (true) {
+                val elapsed = System.currentTimeMillis() - start
+                if (elapsed >= maxMs) {
+                    _progress.value = 95
+                    break
+                }
+                val pct = ((elapsed.toFloat() / expectedMs) * 90).toInt().coerceIn(0, 90)
+                _progress.value = pct
+                if (pct >= 90) break
+                kotlinx.coroutines.delay(120)
+            }
         }
     }
 

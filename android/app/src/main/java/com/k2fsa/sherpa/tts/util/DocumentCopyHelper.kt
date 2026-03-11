@@ -9,7 +9,9 @@ import java.io.File
 import java.io.FileOutputStream
 
 /**
- * 将 ContentResolver 可读的文档复制到应用目录，返回目标文件的绝对路径；失败返回 null。
+ * 负责把系统文档选择器返回的文件复制到应用私有目录。
+ *
+ * UI 层只关心输入 Uri 和目标目录，不直接处理 ContentResolver 细节。
  */
 class DocumentCopyHelper(private val context: Context) {
 
