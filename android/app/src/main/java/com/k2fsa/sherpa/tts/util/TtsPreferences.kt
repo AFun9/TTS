@@ -33,6 +33,16 @@ class TtsPreferences(context: Context) {
         get() = prefs.getFloat(KEY_PLAYBACK_SPEED, 1.0f)
         set(value) = prefs.edit().putFloat(KEY_PLAYBACK_SPEED, value).apply()
 
+    /** 合成语速 (0.5–2.0)，仅持久化，由设置页写入。 */
+    var ttsSpeed: Float
+        get() = prefs.getFloat(KEY_TTS_SPEED, 1.0f)
+        set(value) = prefs.edit().putFloat(KEY_TTS_SPEED, value).apply()
+
+    /** 合成音量 (0–100)，仅持久化，由设置页写入。 */
+    var volume: Int
+        get() = prefs.getInt(KEY_VOLUME, 80)
+        set(value) = prefs.edit().putInt(KEY_VOLUME, value.coerceIn(0, 100)).apply()
+
     companion object {
         private const val PREFS_NAME = "tts_prefs"
         private const val KEY_MODEL_PATH = "model_path"
@@ -40,5 +50,7 @@ class TtsPreferences(context: Context) {
         private const val KEY_LEXICON_PATH = "lexicon_path"
         private const val KEY_AUTO_PLAY = "auto_play"
         private const val KEY_PLAYBACK_SPEED = "playback_speed"
+        private const val KEY_TTS_SPEED = "tts_speed"
+        private const val KEY_VOLUME = "volume"
     }
 }

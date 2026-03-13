@@ -24,6 +24,35 @@
         android:textSize="12sp"
         android:layout_marginTop="2dp" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/durationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="2dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/sizeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="2dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:visibility="gone" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/progressText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:layout_marginTop="2dp"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,11 +61,44 @@
         android:layout_marginTop="8dp">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/playButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play"
+            android:minWidth="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/favoriteButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/renameButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rename"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/shareButton"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/share_audio"
+            android:layout_marginStart="8dp"
             android:minWidth="0dp"
             android:paddingStart="12dp"
             android:paddingEnd="12dp" />
@@ -47,6 +109,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/export_audio"
+            android:layout_marginStart="8dp"
+            android:minWidth="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/deleteButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
             android:layout_marginStart="8dp"
             android:minWidth="0dp"
             android:paddingStart="12dp"

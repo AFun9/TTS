@@ -40,18 +40,33 @@ bool IsAsciiPunct(unsigned char c) {
 }
 
 bool IsUnicodePunct(const std::string& ch) {
-  // 中文 + 西里尔/拉丁/法语/俄语等常用标点，便于多语言输入正确切词
+  // 中文 + 全角 + 西里尔/拉丁/法语/俄语等常用标点，便于多语言输入正确切词
   static const std::unordered_set<std::string> kPunct = {
       "，", "。", "！", "？", "；", "：", "、", "…", "—", "–",
       "（", "）", "《", "》", "【", "】", "「", "」", "『", "』",
+      "\xEF\xBC\x8C", "\xEF\xBC\x8E", "\xEF\xBC\x81", "\xEF\xBC\x9F",  // 全角 ，．！？
+      "\xEF\xBC\x9B", "\xEF\xBC\x9A", "\xEF\xBC\x88", "\xEF\xBC\x89",  // 全角 ；： （）
+      "\xEF\xBD\x9E",  // 全角 ～
       "\xC2\xAB", "\xC2\xBB",   // « »
       "\xE2\x80\xB9", "\xE2\x80\xBA",  // ‹ ›
       "\xE2\x80\x9A", "\xE2\x80\x9E", "\xE2\x80\x9C", "\xE2\x80\x9D",  // ‚ „ " "
       "\xE2\x80\x98", "\xE2\x80\x99",  // ' '
       "\xC2\xB4", "\xE2\x80\x90", "\xE2\x80\x91",  // ´ ‐ ‑
       "\xC2\xA1", "\xC2\xBF", "\xC2\xB7",  // ¡ ¿ ·
+      "\xE2\x80\x93", "\xE2\x80\x94",  // – —
+      "\xE2\x80\xA6",  // …
   };
   return kPunct.count(ch) != 0;
+}
+
+// 判断整段是否为单个标点（用于 TextToTokenIds 中跳过标点，不向模型输出）
+static bool IsPunctuationSegment(const std::string& w) {
+  if (w.empty()) return true;
+  if (w.size() == 1)
+    return IsAsciiPunct(static_cast<unsigned char>(w[0]));
+  if (Utf8CharLen(w, 0) == w.size())
+    return IsUnicodePunct(w);
+  return false;
 }
 
 // 按空白和标点切分（保留标点为单独 token），避免 "word," 导致 lexicon miss。
@@ -146,6 +161,7 @@ std::vector<int64_t> TextToTokenIds(const std::string& text,
 
   std::vector<std::string> words = SplitWords(text);
   for (const auto& w : words) {
+    if (IsPunctuationSegment(w)) continue;  // 标点不参与合成，不输出 token
     if (lexicon && lexicon->Size() > 0 && lexicon->Contains(w)) {
       std::vector<std::string> phonemes = lexicon->GetPhonemes(w);
       std::vector<int64_t> sub = token_table->SymbolsToIds(phonemes, false);

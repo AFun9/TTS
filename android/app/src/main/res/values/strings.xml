@@ -53,6 +53,8 @@
     <string name="error_engine_not_ready">当前为占位实现，尚未对接 sherpa-onnx 原生库，无法生成语音。请在 tts_jni.cpp 中完成 JNI 实现并链接 sherpa-onnx 后重新编译。</string>
     <string name="status_idle_hint">就绪（需完成 JNI 对接后可生成）</string>
     <string name="status_error_fmt">生成失败: %1$s</string>
+    <string name="speed_value_default">1.0x</string>
+    <string name="volume_value_default">80%%</string>
     <string name="diagnostics_empty">暂无诊断信息。</string>
     <string name="diagnostics_suggestions">建议：\n1. 检查 tokens.txt 与模型语言是否匹配。\n2. 确认 lexicon.txt 格式正确且词典命中。\n3. 查看 logcat -s SherpaTts 获取更详细的 native 日志。</string>
 
@@ -63,4 +65,12 @@
     <string name="lexicon_cancel">取消</string>
     <string name="lexicon_example">提示：请确保音素/token 在当前 tokens.txt 中存在，否则会被忽略或导致前端失败。</string>
     <string name="lexicon_invalid_line">格式错误：%1$s</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_section_model">模型与文件</string>
+    <string name="settings_section_playback">播放</string>
+    <string name="settings_section_synthesis">合成</string>
+    <string name="model_ready">已就绪</string>
+    <string name="model_not_ready">未配置模型</string>
+    <string name="open_settings">设置</string>
 </resources>

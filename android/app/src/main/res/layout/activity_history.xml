@@ -30,10 +30,47 @@
             android:textStyle="bold"
             android:gravity="center" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:visibility="invisible" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/clearButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_history" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/playback_speed"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/speedSlider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:valueFrom="0.5"
+            android:valueTo="2.0"
+            android:value="1.0"
+            android:stepSize="0.1"
+            app:labelBehavior="gone" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/speedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/speed_value_default"
+            android:textSize="14sp"
+            android:minWidth="40dp"
+            android:layout_marginStart="8dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

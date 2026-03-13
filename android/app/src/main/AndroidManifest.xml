@@ -23,6 +23,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SherpaTTS" />
+        <activity
             android:name=".ui.lexicon.CustomLexiconActivity"
             android:exported="false"
             android:theme="@style/Theme.SherpaTTS" />

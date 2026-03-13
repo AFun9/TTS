@@ -1,21 +1,22 @@
 package com.k2fsa.sherpa.tts.ui.history
 
-import android.content.Intent
 import android.net.Uri
 import android.media.MediaMetadataRetriever
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.k2fsa.sherpa.tts.R
 import com.k2fsa.sherpa.tts.databinding.ActivityHistoryBinding
 import com.k2fsa.sherpa.tts.util.AudioHistoryItem
+import com.k2fsa.sherpa.tts.util.AudioFileActions
 import com.k2fsa.sherpa.tts.util.AudioHistoryStore
+import com.k2fsa.sherpa.tts.util.AudioMetadataReader
+import com.k2fsa.sherpa.tts.util.AudioPlaybackController
+import com.k2fsa.sherpa.tts.util.TtsPreferences
 import java.io.File
 
 class HistoryActivity : AppCompatActivity() {
@@ -23,21 +24,21 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var adapter: HistoryAdapter
     private var pendingExportPath: String? = null
-    private var mediaPlayer: MediaPlayer? = null
-    private var playingPath: String? = null
+    private val playbackController = AudioPlaybackController()
     private val handler = Handler(Looper.getMainLooper())
     private var playbackSpeed: Float = 1.0f
-    private val prefs by lazy { getSharedPreferences("tts_prefs", MODE_PRIVATE) }
+    private val ttsPrefs by lazy { TtsPreferences(this) }
+    private val audioFileActions by lazy { AudioFileActions(this) }
+    private val audioMetadataReader by lazy { AudioMetadataReader() }
     private val progressUpdater = object : Runnable {
         override fun run() {
-            val player = mediaPlayer ?: return
-            val path = playingPath ?: return
-            if (player.isPlaying) {
+            val path = playbackController.playingPath ?: return
+            if (playbackController.isPlaying) {
                 if (!File(path).exists()) {
                     stopPlayback()
                     return
                 }
-                adapter.updatePlayback(path, player.currentPosition, true)
+                adapter.updatePlayback(path, playbackController.currentPosition, true)
                 handler.postDelayed(this, 500)
             }
         }
@@ -49,7 +50,10 @@ class HistoryActivity : AppCompatActivity() {
         val srcPath = pendingExportPath ?: return@registerForActivityResult
         pendingExportPath = null
         if (uri == null) return@registerForActivityResult
-        exportToUri(srcPath, uri)
+        audioFileActions.export(srcPath, uri) {
+            AudioHistoryStore.removeItem(this, srcPath)
+            loadHistory()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +61,7 @@ class HistoryActivity : AppCompatActivity() {
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        playbackSpeed = prefs.getFloat(KEY_PLAYBACK_SPEED, 1.0f)
+        playbackSpeed = ttsPrefs.playbackSpeed
 
         adapter = HistoryAdapter(
             onPlay = { togglePlay(it) },
@@ -81,8 +85,8 @@ class HistoryActivity : AppCompatActivity() {
         binding.speedSlider.addOnChangeListener { _, value, _ ->
             playbackSpeed = value
             binding.speedText.text = String.format("%.1fx", value)
-            applyPlaybackSpeed()
-            prefs.edit().putFloat(KEY_PLAYBACK_SPEED, value).apply()
+            playbackController.updatePlaybackSpeed(value)
+            ttsPrefs.playbackSpeed = value
         }
         binding.speedText.text = String.format("%.1fx", binding.speedSlider.value)
     }
@@ -98,7 +102,7 @@ class HistoryActivity : AppCompatActivity() {
             }
         }
         val rows = valid.map { item ->
-            HistoryRow(item, getDurationMs(item.path), getSizeBytes(item.path))
+            HistoryRow(item, audioMetadataReader.getDurationMs(item.path), audioMetadataReader.getSizeBytes(item.path))
         }
         adapter.submitList(rows)
         binding.emptyView.visibility = if (valid.isEmpty()) android.view.View.VISIBLE else android.view.View.GONE
@@ -106,100 +110,38 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun shareAudio(path: String) {
-        val file = File(path)
-        if (!file.exists()) {
-            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
+        audioFileActions.share(path) {
             AudioHistoryStore.removeItem(this, path)
             loadHistory()
-            return
-        }
-        try {
-            val uri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", file)
-            val intent = Intent(Intent.ACTION_SEND).apply {
-                type = "audio/wav"
-                putExtra(Intent.EXTRA_STREAM, uri)
-                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            }
-            startActivity(Intent.createChooser(intent, getString(R.string.share_audio)))
-        } catch (_: Throwable) {
-            Toast.makeText(this, getString(R.string.toast_share_failed), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun exportToUri(srcPath: String, dest: Uri) {
-        val src = File(srcPath)
-        if (!src.exists()) {
-            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
-            AudioHistoryStore.removeItem(this, srcPath)
-            loadHistory()
-            return
-        }
-        try {
-            val out = contentResolver.openOutputStream(dest)
-            if (out == null) {
-                Toast.makeText(this, getString(R.string.toast_export_failed), Toast.LENGTH_SHORT).show()
-                return
-            }
-            out.use { output ->
-                src.inputStream().use { input ->
-                    input.copyTo(output)
-                }
-            }
-            Toast.makeText(this, getString(R.string.toast_export_success), Toast.LENGTH_SHORT).show()
-        } catch (_: Throwable) {
-            Toast.makeText(this, getString(R.string.toast_export_failed), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun togglePlay(path: String) {
-        val file = File(path)
-        if (!file.exists()) {
+        if (!playbackController.canPlay(path)) {
             Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
             AudioHistoryStore.removeItem(this, path)
             loadHistory()
             return
         }
-        if (playingPath == path && mediaPlayer != null) {
-            val player = mediaPlayer!!
-            if (player.isPlaying) {
-                player.pause()
-                adapter.updatePlayback(path, player.currentPosition, false)
-            } else {
-                player.start()
-                adapter.updatePlayback(path, player.currentPosition, true)
-                handler.post(progressUpdater)
-            }
-            return
+        val state = playbackController.toggle(path, playbackSpeed) {
+            stopPlayback()
         }
-        stopPlayback()
-        mediaPlayer = MediaPlayer().apply {
-            setDataSource(file.absolutePath)
-            prepare()
-            setOnCompletionListener {
-                stopPlayback()
-            }
-            start()
+        adapter.updatePlayback(state.path, state.positionMs, state.isPlaying)
+        if (state.isPlaying) {
+            handler.post(progressUpdater)
+        } else {
+            handler.removeCallbacks(progressUpdater)
         }
-        playingPath = path
-        applyPlaybackSpeed()
-        adapter.updatePlayback(path, 0, true)
-        handler.post(progressUpdater)
     }
 
     private fun stopPlayback() {
         handler.removeCallbacks(progressUpdater)
-        try {
-            mediaPlayer?.release()
-        } catch (_: Throwable) {
-            // ignore
-        }
-        mediaPlayer = null
-        playingPath = null
+        playbackController.stop()
         adapter.updatePlayback(null, 0, false)
     }
 
     private fun deleteItem(path: String) {
-        if (playingPath == path) {
+        if (playbackController.playingPath == path) {
             stopPlayback()
         }
         val deleted = File(path).delete()
@@ -221,72 +163,42 @@ class HistoryActivity : AppCompatActivity() {
         loadHistory()
     }
 
-    private fun getDurationMs(path: String): Long {
-        val retriever = MediaMetadataRetriever()
-        return try {
-            retriever.setDataSource(path)
-            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLong() ?: 0L
-        } catch (_: Throwable) {
-            0L
-        } finally {
-            retriever.release()
-        }
-    }
-
-    private fun getSizeBytes(path: String): Long {
-        val file = File(path)
-        return if (file.exists()) file.length() else 0L
-    }
-
     private fun seekTo(path: String, positionMs: Int) {
-        if (playingPath != path) {
+        if (playbackController.playingPath != path) {
             togglePlay(path)
         }
-        mediaPlayer?.seekTo(positionMs)
-        adapter.updatePlayback(path, positionMs, mediaPlayer?.isPlaying == true)
+        val state = playbackController.seekTo(positionMs)
+        adapter.updatePlayback(path, state.positionMs, state.isPlaying)
     }
 
     private fun renameItem(path: String) {
-        val file = File(path)
-        if (!file.exists()) {
-            Toast.makeText(this, getString(R.string.toast_audio_missing), Toast.LENGTH_SHORT).show()
-            AudioHistoryStore.removeItem(this, path)
-            loadHistory()
-            return
-        }
-        val input = android.widget.EditText(this).apply {
-            setText(file.nameWithoutExtension)
-        }
-        val origin = AudioHistoryStore.getItems(this).firstOrNull { it.path == path }
-        androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle(getString(R.string.rename))
-            .setView(input)
-            .setPositiveButton(getString(R.string.ok)) { _, _ ->
-                val newName = input.text.toString().trim()
-                if (newName.isBlank()) return@setPositiveButton
-                val target = File(file.parentFile, "$newName.wav")
-                if (target.exists()) {
-                    Toast.makeText(this, getString(R.string.toast_name_exists), Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-                if (file.renameTo(target)) {
-                    val item = AudioHistoryItem(
-                        target.absolutePath,
-                        origin?.createdAt ?: System.currentTimeMillis(),
-                        origin?.favorite ?: false
-                    )
-                    if (playingPath == path) {
-                        playingPath = target.absolutePath
+        audioFileActions.rename(
+            path = path,
+            onMissing = {
+                AudioHistoryStore.removeItem(this, path)
+                loadHistory()
+            },
+            onRenamed = { newPath, createdAt, favorite ->
+                val item = AudioHistoryItem(newPath, createdAt, favorite)
+                if (playbackController.playingPath == path) {
+                    val currentPos = playbackController.currentPosition
+                    val wasPlaying = playbackController.isPlaying
+                    playbackController.play(newPath, playbackSpeed) {
+                        stopPlayback()
                     }
-                    AudioHistoryStore.removeItem(this, path)
-                    AudioHistoryStore.addItem(this, item)
-                    loadHistory()
-                } else {
-                    Toast.makeText(this, getString(R.string.toast_rename_failed), Toast.LENGTH_SHORT).show()
+                    playbackController.seekTo(currentPos)
+                    if (!wasPlaying) {
+                        val state = playbackController.toggle(newPath, playbackSpeed) {
+                            stopPlayback()
+                        }
+                        adapter.updatePlayback(state.path, state.positionMs, state.isPlaying)
+                    }
                 }
+                AudioHistoryStore.removeItem(this, path)
+                AudioHistoryStore.addItem(this, item)
+                loadHistory()
             }
-            .setNegativeButton(getString(R.string.cancel), null)
-            .show()
+        )
     }
 
     private fun toggleFavorite(path: String) {
@@ -295,8 +207,8 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun syncPlaybackState() {
-        val path = playingPath
-        if (path == null || mediaPlayer == null) {
+        val path = playbackController.playingPath
+        if (path == null) {
             adapter.updatePlayback(null, 0, false)
             return
         }
@@ -304,26 +216,11 @@ class HistoryActivity : AppCompatActivity() {
             stopPlayback()
             return
         }
-        val player = mediaPlayer!!
-        adapter.updatePlayback(path, player.currentPosition, player.isPlaying)
-    }
-
-    private fun applyPlaybackSpeed() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            try {
-                val params = mediaPlayer?.playbackParams?.setSpeed(playbackSpeed)
-                if (params != null) mediaPlayer?.playbackParams = params
-            } catch (_: Throwable) {
-            }
-        }
+        adapter.updatePlayback(path, playbackController.currentPosition, playbackController.isPlaying)
     }
 
     override fun onStop() {
         super.onStop()
         stopPlayback()
-    }
-
-    companion object {
-        private const val KEY_PLAYBACK_SPEED = "playback_speed"
     }
 }
